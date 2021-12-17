@@ -1,4 +1,11 @@
 
+
+# Create your Branch
+
+`git branch <yourBranchName>`<br>
+`git checkout <yourBranchName>`<br>
+`git pull origin main`
+
 # Sync-Up!
 
 >`npm install`<br>
