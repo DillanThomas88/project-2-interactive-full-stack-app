@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        'home-img': "url('/Users/latommyla/project-2-interactive-full-stack-app/img/homepage.jpg')",
+        'home-img': "url('./img/homepage.jpg')",
       }),
     },
   },
