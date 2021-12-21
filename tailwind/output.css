@@ -470,6 +470,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
+.fixed {
+  position: fixed;
+}
+
 .m-24 {
   margin: 6rem;
 }
@@ -727,6 +731,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .bg-cover {
   background-size: cover;
+}
+
+.bg-fixed {
+  background-attachment: fixed;
+}
+
+.bg-local {
+  background-attachment: local;
+}
+
+.bg-scroll {
+  background-attachment: scroll;
 }
 
 .bg-center {
@@ -1079,6 +1095,11 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin: 24rem;
   }
 
+  .md\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -1103,6 +1124,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: auto;
   }
 
+  .md\:h-full {
+    height: 100%;
+  }
+
   .md\:w-auto {
     width: auto;
   }
@@ -1113,6 +1138,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:w-1\/2 {
     width: 50%;
+  }
+
+  .md\:max-w-lg {
+    max-width: 32rem;
+  }
+
+  .md\:flex-1 {
+    flex: 1 1 0%;
   }
 
   .md\:grid-cols-3 {
