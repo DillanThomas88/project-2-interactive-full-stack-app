@@ -30,7 +30,7 @@ body {
     font-size: large;
     font-weight: 500;
     height: 98vh;
-    background-color: var(--light);
+    background-color: var(--dark);
     color: var(--dark);
 }
 a {
