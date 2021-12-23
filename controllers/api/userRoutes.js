@@ -34,9 +34,9 @@ router.post('/login', async (req, res) => {
 });
 
 //TO ADD:
-//POST request for newUSer
-//POST request for requestPasswordReset
-//PUT request for newPassword to replace old
+//POST request to '/new' for newUSer 
+//POST request to '/request-new' for requestPasswordReset
+//PUT request to '/reset' for newPassword to replace old 
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
