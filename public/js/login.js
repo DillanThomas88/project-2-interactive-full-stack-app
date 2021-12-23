@@ -1,16 +1,16 @@
-//Change routes, have success/fail message append to the page ratehr than the alert? //
+//Change routes, have success/fail message append to the page rather than the alert? //
 
 
 const loginFormHandler = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector('#username').value.trim();
-    const password = document.querySelector('#password').value.trim();
+    const userEmail = document.querySelector('#username').value.trim();
+    const userPassword = document.querySelector('#password').value.trim();
   
-    if (email && password) {
+    if (userEmail && userPassword) {
       const response = await fetch('/api/users/login', {
         method: 'POST',
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ userEmail, userPassword }),
         headers: { 'Content-Type': 'application/json' },
       });
   
