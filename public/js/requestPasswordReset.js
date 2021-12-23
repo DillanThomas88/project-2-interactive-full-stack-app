@@ -1,15 +1,15 @@
-//Change routes, query selector names have success/fail message append to the page ratehr than the alert? //
+//Change routes, have success/fail message append to the page rather than the alert? //
 //Figure out how to trigger an email//
 
 const requestPassResetFormHandler = async (event) => {
     event.preventDefault();
   
-    const email = document.querySelector('#email-login').value.trim();
+    const accountEmail = document.querySelector('#email-login').value.trim();
   
-    if (email) {
-      const response = await fetch('/api/users/login', {
+    if (accountEmail) {
+      const response = await fetch('/api/users/request-new', {
         method: 'POST',
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ accountEmail }),
         headers: { 'Content-Type': 'application/json' },
       });
   
