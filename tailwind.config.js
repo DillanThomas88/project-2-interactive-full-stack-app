@@ -1,7 +1,11 @@
 module.exports = {
-  content: ["./index.html"],
+  content: ["./public/index.html", "./public/index2.html", "./public/index3.html"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: (theme) => ({
+        'home-img': "url('./public/img/homepage.jpg')",
+      }),
+    },
   },
   plugins: [],
 }
