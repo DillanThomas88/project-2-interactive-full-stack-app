@@ -3,7 +3,7 @@ const { User } = require('../../models');
 
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({ where: { email: req.body.userEmail } });
 
     if (!userData) {
       res
@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await userData.checkPassword(req.body.userPassword);
 
     if (!validPassword) {
       res
@@ -32,6 +32,11 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+//TO ADD:
+//POST request for newUSer
+//POST request for requestPasswordReset
+//PUT request for newPassword to replace old
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {

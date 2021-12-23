@@ -1,4 +1,4 @@
-//Change routes, query selector names, have success/fail message append to the page ratehr than the alert? //
+//Change routes, have success/fail message append to the page rather than the alert? //
 
 const signUpFormHandler = async (event) => {
     event.preventDefault()
@@ -9,7 +9,7 @@ const signUpFormHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim()
   
     if (firstName && lastName && email && password) {
-      const response = await fetch('/api/users/login', {
+      const response = await fetch('/api/users/new', {
         method: 'POST',
         body: JSON.stringify({ firstName, lastName, email, password }),
         headers: { 'Content-Type': 'application/json' },
