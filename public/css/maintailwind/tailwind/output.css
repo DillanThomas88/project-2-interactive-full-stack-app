@@ -621,6 +621,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-wrap: wrap;
 }
 
+.content-center {
+  align-content: center;
+}
+
 .items-center {
   align-items: center;
 }
@@ -940,6 +944,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(96 165 250 / var(--tw-border-opacity));
 }
 
+.focus\:bg-gray-200:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
 .focus\:text-gray-900:focus {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -1004,6 +1013,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:m-56 {
     margin: 14rem;
+  }
+
+  .md\:m-96 {
+    margin: 24rem;
   }
 
   .md\:mx-auto {
