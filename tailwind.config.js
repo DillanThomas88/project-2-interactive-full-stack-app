@@ -1,9 +1,9 @@
 module.exports = {
-  content: ["./index.html", "./index2.html"],
+  content: ["./public/index.html", "./public/index2.html", "./public/index3.html"],
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        'home-img': "url('../img/homepage.jpg')",
+        'home-img': "url('./public/img/homepage.jpg')",
       }),
     },
   },
