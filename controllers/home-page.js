@@ -4,5 +4,13 @@ router.get('/', async (req, res) => {
   // Send the rendered Handlebars.js template back as the response
   res.render('homepage');
 });
+router.get('/signup', async (req, res) => {
+  // Send the rendered Handlebars.js template back as the response
+  res.render('signup');
+});
+router.get('/user', async (req, res) => {
+  // Send the rendered Handlebars.js template back as the response
+  res.render('user');
+});
 
 module.exports = router;
