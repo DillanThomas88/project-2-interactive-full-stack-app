@@ -1,6 +1,5 @@
 //Change routes, have success/fail message append to the page rather than the alert? //
 const signUpFormHandler = async (event) => {
-  console.log('hello')
   event.preventDefault()
   
   const firstName = document.querySelector('#first-name').value.trim()
