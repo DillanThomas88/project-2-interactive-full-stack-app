@@ -5,25 +5,23 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
 
   try {
-    // degug: flip boolean
-
     if (!req.session.logged_in) {
       res.redirect('/login');
     } else {
       let logged_in = req.session.logged_in
 
-      // let data = await data.findAll({
-      //   include:[
-      //     {model: User, as :"user"},
-      //     {model: bill, as :"bills"},
-      //     {model: loan, as :"loans"} <-- is this how we do it?
-      //   ]
-      // })
+      let data = await User.findAll(
+        // where:[],
+        // include:[
+        //   {model: bill, as :"bill"},
+        //   {model: loan, as :"loan"}
+        // ]
+      )
 
-      // let serializedData = data.map(data=> data.get({plain:true}))
+      let serializedData = data.map(data=> data.get({plain:true}))
 
-      //----> We Need to Create tables for bills and loans to progress -------  res.render('user', {data:serializedData, logged_in})
-      res.render('user')
+      res.render('user', {data:serializedData, logged_in})
+      res.redirect('user')
     }
 
   } catch (err) {
@@ -32,9 +30,8 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  req.session.logged_in = false;
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/user');
     return;
   }
 
@@ -42,6 +39,10 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/user');
+    return;
+  }
   res.render('signup')
 })
 
