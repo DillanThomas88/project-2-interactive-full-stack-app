@@ -703,7 +703,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .bg-home-img {
-  background-image: url('./public/img/homepage.jpg');
+  background-image: url('../../../img/homepage.jpg');
 }
 
 .bg-cover {
