@@ -1,17 +1,24 @@
 //Change routes, have success/fail message append to the page rather than the alert? //
 
 const signUpFormHandler = async (event) => {
-    event.preventDefault()
+  event.preventDefault()
   
-    const firstName = document.querySelector('#first-name').value.trim()
-    const lastName = document.querySelector('#last-name').value.trim()
-    const email = document.querySelector('#email-signup').value.trim()
-    const password = document.querySelector('#password-signup').value.trim()
+  const firstName = document.querySelector('#first-name').value.trim()
+  const lastName = document.querySelector('#last-name').value.trim()
+  const email = document.querySelector('#email-signup').value.trim()
+  const password = document.querySelector('#password-signup').value.trim()
   
-    if (firstName && lastName && email && password) {
+  if (firstName && lastName && email && password) {
+    let user = {
+      firstName,
+      lastName,
+      email,
+      password
+    }
+    console.log(user)
       const response = await fetch('/api/users/new', {
         method: 'POST',
-        body: JSON.stringify({ firstName, lastName, email, password }),
+        body: JSON.stringify({ user }),
         headers: { 'Content-Type': 'application/json' },
       });
   
@@ -22,7 +29,6 @@ const signUpFormHandler = async (event) => {
       }
     }
   }
-  
   document
     .querySelector('#signup-button')
-    .addEventListener('click', signUpFormHandler)
+    .addEventListener('submit', signUpFormHandler)

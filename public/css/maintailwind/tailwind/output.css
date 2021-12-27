@@ -703,7 +703,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .bg-home-img {
-  background-image: url('/Users/latommyla/project-2-interactive-full-stack-app/public/img/homepage.jpg');
+  background-image: url('../../../img/homepage.jpg');
 }
 
 .bg-cover {

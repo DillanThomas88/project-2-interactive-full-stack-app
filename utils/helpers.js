@@ -1,16 +1,19 @@
+
+
 module.exports = {
-  // Helper function returns a randomly generated book emoji
+  
   dateData: () => {
     const month = ["January", "February", "March", "April", "May", "June",  "July", "August", "September", "October", "November", "December"];
     const date = new Date()
 
-    let year = date.getFullYear()
-    let nextYear = 1;
-    let day = date.getDate()
-    let nextMonth = date.getMonth()+1
+    const year = date.getFullYear()
+    const nextYear = 1;
+    const day = date.getDate()
+    const nextMonth = date.getMonth()+1
 
     if(nextMonth >11){
-      nextMonth = 0; nextYear += year
+      nextMonth = 0
+      nextYear += year
     } else { nextYear = year }
 
     return {
@@ -22,5 +25,5 @@ module.exports = {
       informalDate: `${date.getMonth()+1}/${day}/${year}`,
       informalDueDate: `${nextMonth+1}/${day}/${nextYear}`
     }
-  }
+  },
 };
