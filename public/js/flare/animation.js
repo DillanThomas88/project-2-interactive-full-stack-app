@@ -3,9 +3,12 @@ let spinner2 = document.getElementById('spinner2')
 let wheel1 = document.getElementById('wheel1')
 let wheel2 = document.getElementById('wheel2')
 let wheel3 = document.getElementById('wheel3')
+let logo = document.querySelector('#logo-flare').children[0]
+let logoName = document.querySelector('#logo-name')
 let num = 0
 let num2 = 0
-spinner.style = "fill: #000;"
+let t = 0
+// spinner.style = "fill: #000;"
 
 rotateSpinner = () => {
     setInterval(function(){
@@ -28,5 +31,24 @@ rotateWheel = () => {
     
 }
 
-rotateSpinner()
-rotateWheel()
+
+logoName.addEventListener('mouseover', function(event) {
+    logoName.style.color = '#000'
+
+    let timer = setInterval(function(){
+        t += -1
+        if(t === 360){t = 0}
+        logo.parentElement.style.transform = `rotate(${t}deg)`
+    },20)
+    
+    logoName.addEventListener('mouseout', function(){
+        logoName.style.color = '#000'
+        clearInterval(timer)
+    })
+})
+
+
+
+// rotateLogo()
+// rotateSpinner()
+// rotateWheel()
