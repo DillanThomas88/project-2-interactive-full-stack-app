@@ -1,5 +1,4 @@
 //Change routes, have success/fail message append to the page rather than the alert? //
-//Figure out how to trigger an email//
 
 const requestPassResetFormHandler = async (event) => {
     event.preventDefault();
@@ -24,3 +23,5 @@ const requestPassResetFormHandler = async (event) => {
   document
     .querySelector('#request-pass-reset-button')
     .addEventListener('click', requestPassResetFormHandler);
+
+

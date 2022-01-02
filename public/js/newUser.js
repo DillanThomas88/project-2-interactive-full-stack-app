@@ -24,7 +24,7 @@ const signUpFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/')
       } else {
-        alert('Please enter all  required fields')
+        alert('User already exists. Please log in or sign up with a different email.')
       }
     }
   }
