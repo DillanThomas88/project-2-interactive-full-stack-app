@@ -11,7 +11,7 @@ router.post('/request-new', async (req, res) => {
     const validEmail = await User.findOne(
       {
         where: {
-          email: req.body.accountEmail } });
+          email: req.body.email } });
     // console.log(validEmail)
     if (!validEmail) {
       res
@@ -20,16 +20,46 @@ router.post('/request-new', async (req, res) => {
       return;
     }
     
-    const link = `${process.env.BASE_URL}/password-reset/${this.user.id}`;
-    await sendEmail(user.email, "Your password reset link", `Here is your link to reset your password: ${link}`);
+    // const link = `${process.env.BASE_URL}/password-reset/${this.id}`;
+    const link = `localhost:3001/password-reset/${validEmail.id}`;
+    await sendEmail(req.body.email, "Your password reset link", `Here is your link to reset your password: ${link}`);
 
     res.send("password reset link sent to your email account");
     
   } catch (err) {
+    console.log('error-----------------------')
     console.log(err)
     res.status(500).json(err);
   }
 });
+
+router.post('/password-reset/:id', async (req, res) => {
+  try {
+    const validEmail = await User.findOne(
+      {
+        where: {
+          email: req.body.email } });
+    // console.log(validEmail)
+    if (!validEmail) {
+      res
+      .status(400)
+      .json({ message: 'Email not found, please try again' });
+      return;
+    }
+    
+    // const link = `${process.env.BASE_URL}/password-reset/${this.id}`;
+    const link = `https://localhost:3001/api/users/password-reset/${validEmail.id}`;
+    await sendEmail(req.body.email, "Your password reset link", `Here is your link to reset your password: ${link}`);
+
+    res.send("password reset link sent to your email account");
+    
+  } catch (err) {
+    console.log('error-----------------------')
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
+
 
 
 //PUT request to '/reset' for newPassword to replace old 

@@ -49,7 +49,14 @@ router.get('/signup', (req, res) => {
 router.get('/user', withAuth, (req, res) => {
   res.render("user")
 })
+
+
 router.get('/request-new-password', (req, res) => {
   res.render("requestreset")
+})
+
+
+router.get('/password-reset/:id', (req, res) => {
+  res.render("passwordreset")
 })
 module.exports = router;
