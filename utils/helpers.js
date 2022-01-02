@@ -4,10 +4,10 @@
     const month = ["January", "February", "March", "April", "May", "June",  "July", "August", "September", "October", "November", "December"];
     const date = new Date()
 
-    const year = date.getFullYear()
-    const nextYear = 1;
-    const day = date.getDate()
-    const nextMonth = date.getMonth()+1
+    let year = date.getFullYear()
+    let nextYear = 1;
+    let day = date.getDate()
+    let nextMonth = date.getMonth()+1
 
     if(nextMonth >11){
       nextMonth = 0
