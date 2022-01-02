@@ -21,7 +21,7 @@ const requestPassResetFormHandler = async (event) => {
   };
   
   document
-    .querySelector('#request-pass-reset-button')
+    .querySelector('#request-reset')
     .addEventListener('click', requestPassResetFormHandler);
 
 

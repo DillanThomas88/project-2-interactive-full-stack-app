@@ -9,8 +9,8 @@ const sendEmail = require("../../utils/sendEmail");
 router.post('/request-new', async (req, res) => {
   try {
     const validEmail = await User.findOne(
-      { 
-        where: { 
+      {
+        where: {
           email: req.body.accountEmail } });
     // console.log(validEmail)
     if (!validEmail) {
@@ -38,7 +38,6 @@ router.put("reset/:id", async (req, res) => {
     {
     password: req.body.newPassword
     },
-
     {
       where: {
         id: req.params.id
@@ -50,7 +49,6 @@ router.put("reset/:id", async (req, res) => {
   })
   .catch((err) => res.json(err))
 })
-////
 
 router.get('/',  async (req,res) => {
   const data = await User.findAll()
