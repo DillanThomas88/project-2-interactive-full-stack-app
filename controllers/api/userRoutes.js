@@ -11,7 +11,7 @@ router.post('/request-new', async (req, res) => {
     const validEmail = await User.findOne(
       {
         where: {
-          email: req.body.email } });
+          email: req.body.accountEmail } });
     // console.log(validEmail)
     if (!validEmail) {
       res
@@ -37,21 +37,30 @@ router.post('/request-new', async (req, res) => {
 
 
 //PUT request to '/reset' for newPassword to replace old 
-router.put("reset/:id", async (req, res) => {
-  User.update(
-    {
-    password: req.body.newPassword
-    },
-    {
-      where: {
-        id: req.params.id
+router.put("/reset/:id", async (req, res) => {
+  try {
+    const newPass = await User.update(
+      {
+      password: req.body.newPassword
       },
+      {
+        where: {
+          id: req.params.id
+        },
+      }
+    )
+    if (!newPass) {
+      res
+      .status(400)
+      .json({ message: 'Enter a password, please try again' });
+      return;
     }
-  )
-  .then((updatedPassword) => {
-    res.json(updatedPassword)
-  })
-  .catch((err) => res.json(err))
+    res.json(newPass)
+
+  }catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
 })
 
 router.get('/',  async (req,res) => {
