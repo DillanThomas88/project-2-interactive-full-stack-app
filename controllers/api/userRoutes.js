@@ -20,7 +20,7 @@ router.post('/request-new', async (req, res) => {
       return;
     }
     
-    const link = `${process.env.BASE_URL}/password-reset/${validEmail.id}`;
+    const link = `https://shoestring-app.herokuapp.com/password-reset/${validEmail.id}`;
     // const link = `localhost:3001/password-reset/${validEmail.id}`;
     await sendEmail(req.body.accountEmail, "Your password reset link", `Here is your link to reset your password: ${link}`);
 
