@@ -11,7 +11,7 @@ router.post('/request-new', async (req, res) => {
     const validEmail = await User.findOne(
       {
         where: {
-          email: req.body.accountEmail } });
+          email: req.body } });
     // console.log(validEmail)
     if (!validEmail) {
       res
