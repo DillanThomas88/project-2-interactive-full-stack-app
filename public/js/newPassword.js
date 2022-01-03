@@ -6,10 +6,10 @@ const newPassFormHandler = async (event) => {
     const newPassword = document.querySelector('#new-password').value.trim();
     const confirmNewPassword = document.querySelector('#confirm-new-password').value.trim();
   
-    if (newPassword = confirmNewPassword) {
+    if (newPassword === confirmNewPassword) {
       
-      console.log(newPassword)
-      const response = await fetch('/api/users/reset', {
+      // console.log(newPassword)
+      const response = await fetch('/api/users/reset/:id', {
         method: 'PUT',
         body: JSON.stringify({ newPassword }),
         headers: { 'Content-Type': 'application/json' },
