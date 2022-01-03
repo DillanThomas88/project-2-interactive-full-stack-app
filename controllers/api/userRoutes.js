@@ -11,7 +11,7 @@ router.post('/request-new', async (req, res) => {
     const validEmail = await User.findOne(
       {
         where: {
-          email: req.body } });
+          email: req.body.accountEmail } });
     // console.log(validEmail)
     if (!validEmail) {
       res
@@ -22,7 +22,7 @@ router.post('/request-new', async (req, res) => {
     
     const link = `${process.env.BASE_URL}/password-reset/${validEmail.id}`;
     // const link = `localhost:3001/password-reset/${validEmail.id}`;
-    await sendEmail(req.body.email, "Your password reset link", `Here is your link to reset your password: ${link}`);
+    await sendEmail(req.body.accountEmail, "Your password reset link", `Here is your link to reset your password: ${link}`);
 
     res.send("password reset link sent to your email account");
     
