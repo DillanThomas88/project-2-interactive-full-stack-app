@@ -10,18 +10,16 @@ router.get('/', async (req, res) => {
     } else {
       let logged_in = req.session.logged_in
 
-      let data = await User.findAll(
-        // where:[],
-        // include:[
-        //   {model: bill, as :"bill"},
-        //   {model: loan, as :"loan"}
-        // ]
-      )
+      // let data = await User.findAll(
+      //   where:[],
+      //   include:[
+      //     {model: bill, as :"bill"},
+      //     {model: loan, as :"loan"}
+      //   ]
+      // )
 
-      let serializedData = data.map(data=> data.get({plain:true}))
-
-      res.render('user', {data:serializedData, logged_in})
-      res.redirect('user')
+      // let serializedData = data.map(data=> data.get({plain:true}))
+      res.redirect('/user')
     }
 
   } catch (err) {
