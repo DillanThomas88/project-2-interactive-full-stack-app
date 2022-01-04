@@ -6,7 +6,7 @@ const requestPassResetFormHandler = async (event) => {
     const accountEmail = document.querySelector('#email-login').value.trim();
   
     if (accountEmail) {
-      const response = await fetch('/api/users/request-new', {
+      const response = await fetch('/api/post/request-new', {
         method: 'POST',
         body: JSON.stringify({ accountEmail }),
         headers: { 'Content-Type': 'application/json' },

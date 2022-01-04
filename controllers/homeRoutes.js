@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { accepts } = require('express/lib/request');
 const { User, Bills, Accounts, Debt, Cards } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -11,17 +10,21 @@ router.get('/', async (req, res) => {
       res.redirect('/login');
     } else {
       let logged_in = req.session.logged_in
-
+      let isUser = true
       // const data = await User.findOne({ where: { id: req.session.user_id },
       const user = await User.findByPk(req.session.user_id, {
-        include: [{ model: Bills }, { model: Accounts }, { model: Debt }, { model: Cards }],
+        include: [
+          { model: Bills }, 
+          { model: Accounts }, 
+          { model: Debt }, 
+          { model: Cards }],
       });
-      const userData = await user.get({plain:true})
-      
+      const userData = await user.get({ plain: true })
+
 
       console.log("USER DATA --- ", userData)
       // res.status(200).json(serializedData)
-      res.render('user', { data: userData })
+      res.render('user', { data: userData, isUser })
     }
 
   } catch (err) {
@@ -32,7 +35,7 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
   console.log(req.session.logged_in, req.session.user_id)
   if (req.session.logged_in) {
-    res.redirect('/user');
+    res.redirect('/');
     return;
   }
 
@@ -51,13 +54,13 @@ router.get('/user', withAuth, (req, res) => {
   res.render("user",)
 })
 
-
 router.get('/request-new-password', (req, res) => {
   res.render("requestreset")
 })
 
-
 router.get(`/password-reset?:id`, (req, res) => {
   res.render("passwordreset")
 })
+
+
 module.exports = router;
