@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const { User } = require('.');
 const sequelize = require('../config/connection');
 
 class Debt extends Model {
@@ -39,6 +40,10 @@ Debt.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: { model: "user", key: "id", }
+    }
   },
   {
     // hooks: {
