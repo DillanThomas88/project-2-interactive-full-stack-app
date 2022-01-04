@@ -36,7 +36,7 @@
     return {
       totalBills: billTotal,
       leaves: monthlyIncome - billTotal
-    } 
+    }  
   }
   
   //    returns:
