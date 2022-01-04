@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { accepts } = require('express/lib/request');
+const { User, Bills, Accounts, Debt, Cards } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
+  console.log(req.session.user_id)
 
   try {
     if (!req.session.logged_in) {
@@ -10,16 +12,16 @@ router.get('/', async (req, res) => {
     } else {
       let logged_in = req.session.logged_in
 
-      // let data = await User.findAll(
-      //   where:[],
-      //   include:[
-      //     {model: bill, as :"bill"},
-      //     {model: loan, as :"loan"}
-      //   ]
-      // )
+      // const data = await User.findOne({ where: { id: req.session.user_id },
+      const user = await User.findByPk(req.session.user_id, {
+        include: [{ model: Bills }, { model: Accounts }, { model: Debt }, { model: Cards }],
+      });
+      const userData = await user.get({plain:true})
+      
 
-      // let serializedData = data.map(data=> data.get({plain:true}))
-      res.redirect('/user')
+      console.log("USER DATA --- ", userData)
+      // res.status(200).json(serializedData)
+      res.render('user', { data: userData })
     }
 
   } catch (err) {
@@ -28,6 +30,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
+  console.log(req.session.logged_in, req.session.user_id)
   if (req.session.logged_in) {
     res.redirect('/user');
     return;
@@ -45,7 +48,7 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/user', withAuth, (req, res) => {
-  res.render("user")
+  res.render("user",)
 })
 
 

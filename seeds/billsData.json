@@ -1,0 +1,8 @@
+[{
+    "user_id": 1,
+    "name": "Rent",
+    "cost": 1200,
+    "due_date": "1/3/2022",
+    "auto_pay": true,
+    "debited": false
+  }]

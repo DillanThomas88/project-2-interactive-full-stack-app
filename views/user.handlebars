@@ -1,49 +1,97 @@
-<div class="bg-home-img bg-fixed bg-cover bg-center flex items-top min-h-screen">
-  <div class="container p-28 mx-auto">
-    <div class="accordion-body md:w-full w-full mx-auto p-8">
-      <div class="shadow-md">
-        <div class="tab w-full bg-white overflow-hidden border-t">
-          <input class="absolute opacity-0 " id="tab-multi-one" type="checkbox" name="tabs">
-          <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-one"> Accounts </label>
-          <div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
-            <p class="p-5"> Checking Account: <span class="float-right"> $60,000 </span></p>
-            <p class="p-5"> Savings Account: <span class="float-right"> $340,000 </span></p>
-            <p class="p-5"> Credit Card: <span class="float-right"> $500 </span></p>
-          </div>
-        </div>
-        <div class="tab w-full bg-white overflow-hidden border-t">
-          <input class="absolute opacity-0" id="tab-multi-two" type="checkbox" name="tabs">
-          <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-two"> Monthly - Set Bills </label>
-          <div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
-            <p class="p-5"> Rent: $1,200 <span class="float-right"> Due-Date: 1/1/2022 </span></p>
-            <ul class="list-disc">
-              <li class="p-2 ml-12"> Automatic on 1st of every month </li>
-              <li class="p-2 ml-12"> Taken out of account: </li>
-            </ul>
-            <p class="p-5"> Dental: $65 <span class="float-right"> Due-Date: 1/3/2022 </span></p>
-            <ul class="list-disc">
-              <li class="p-2 ml-12"> Not automatic </li>
-              <li class="p-2 ml-12"> Paid: </li>
-              <li class="p-2 ml-12"> Taken out of account: </li>
-            </ul>
-            <p class="p-5"> SDG&E: $150 <span class="float-right"> Due-Date: 1/15/2022 </span></p>
-            <ul class="list-disc">
-              <li class="p-2 ml-12"> Automatic on 1st of every month </li>
-              <li class="p-2 ml-12"> Taken out of account: </li>
-            </ul>
-          </div>
-        </div>
-        <div class="tab w-full bg-white overflow-hidden border-t">
-          <input class="absolute opacity-0" id="tab-multi-three" type="checkbox" name="tabs">
-          <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-three"> Debt </label>
-          <div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
-            <p class="p-5"> Loans </p>
-            <p class="p-5"> Other </p>
-          </div>
-        </div>
-      </div>
+<div class="flex font-monster">
+  <div class="w-screen md:w-screen p-28 sm:p-2 md:p-2 m-auto">
+    <div class="flex items-center max-w-screen-lg m-auto">
+      <div class="md:px-20 text-xl sm:text-2xl md:text-3xl font-bold"> Accounts <button
+          class="inline-flex items-center justify-center w-7 h-7 mr-2 text-white transition-colors duration-150 bg-gray-300 rounded-lg focus:shadow-outline hover:bg-gray-600">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+            <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+              clip-rule="evenodd" fill-rule="evenodd"></path>
+          </svg>
+        </button></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="flex m-auto justify-around md:p-4 items-center font-monster md:w-screen max-w-screen-2xl">
+  <div class="md:p-10 flex bg-blue-100 md:w-7/12">
+    <div class="m-auto">
+      <p class="text-xl sm:text-2xl md:text-4xl"> $8,000 </p>
+      <p class="text-lg sm:text-xl md:text-xl font-bold"> Checking </p>
+    </div>
+    <div class="m-auto">
+      <p class="text-xl sm:text-2xl md:text-4xl"> $75,000 </p>
+      <p class="text-lg sm:text-xl md:text-xl font-bold"> Savings </p>
+    </div>
+  </div>
+  <div class="md:p-7 flex bg-orange-100 justify-center md:w-2/6">
+    <div class="m-auto">
+      <p class="text-xl sm:text-2xl md:text-4xl"> $500 </p>
+      <p class="text-lg sm:text-xl md:text-xl"> Credit Card </p>
+      <span> <b>Due</b> 1/17/2022 by 5pm </span>
     </div>
   </div>
 </div>
 
-  <script src="/js/logout.js"></script>
+<div class="flex m-auto justify-around md:p-2 items-center font-monster md:w-screen max-w-screen-2xl">
+  <div class="md:mt-6 flex bg-white md:w-7/12">
+    <div class="overflow-y-auto md:h-96 md:w-screen">
+      <div class="pb-4">
+        <div class="text-xl sm:text-xl md:text-2xl font-bold"> Bills <button
+            class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white transition-colors duration-150 bg-gray-300 rounded-lg focus:shadow-outline hover:bg-gray-600">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+              <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                clip-rule="evenodd" fill-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {{#each data.bills}}
+      
+      <div class="md:p-1 bg-slate-200 font-bold rounded-md"> {{name}} <span class="md:px-8"> ${{cost}} </span>
+        <div class="flex float-right justify-center">
+          <span class="md:px-8"> Due {{due_date}} </span>
+          <button type="button"
+            class="bg-white rounded-md p-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <ul class="list-disc md:p-3 md:px-6">
+        <li> <b>Auto</b> Pay </li>
+        <li> Taken out of acccount </li>
+      </ul>
+      {{/each}}
+    </div>
+  </div>
+  <div class="md:p-1 md:h-96 md:w-2/6 grid md:gap-24">
+    <div class="grid grid-row-2 md:grid-row-2 divide-y divide-black">
+      <div class="text-gray-500">
+        <p class="md:p-1 text-xl sm:text-2xl md:text-base"> Total Monthly Income <span class="float-right"> $5,000
+          </span></p>
+        <p class="md:p-1 text-lg sm:text-xl md:text-base"> Total Monthly Bills <span class="float-right"> $3,000 </span>
+        </p>
+      </div>
+      <div>
+        <p class="md:p-1 md:text-base"> Leaves <span class="float-right"> $2,000 </span></p>
+      </div>
+    </div>
+    <div class="grid grid-row-2 md:grid-row-2 divide-y divide-black">
+      <div class="text-gray-500">
+        <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> Next Payday <span class="float-right font-bold"> January 7,
+            2022 </span></p>
+        <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> Bills Due Before 7th <span class="float-right font-bold"> $500
+          </span></p>
+      </div>
+      <div>
+        <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> New Checking Balance <span
+            class="float-right text-bold md:text-2xl"> $7,500 </span></p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/logout.js"></script>
