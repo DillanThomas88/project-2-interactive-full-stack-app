@@ -42,9 +42,13 @@ Customer.init(
   },
   {
     hooks: {
-      beforeCreate: async (newCustomerData) => {
-        newCustomerData.password = await bcrypt.hash(newCustomerData.password, 10);
-        return newCustomerData;
+      beforeUpdate: async (newPasswordData) => {
+        newPasswordData.newPassword = await bcrypt.hash(newPasswordData.newPassword, 10);
+        return newPasswordData;
+      },
+      beforeCreate: async (newUserData) => {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
       },
     },
     sequelize,

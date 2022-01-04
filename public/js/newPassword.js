@@ -4,9 +4,12 @@ const newPassFormHandler = async (event) => {
     event.preventDefault();
   
     const newPassword = document.querySelector('#new-password').value.trim();
+    const confirmNewPassword = document.querySelector('#confirm-new-password').value.trim();
   
-    if (newPassword) {
-      const response = await fetch('/api/users/reset', {
+    if (newPassword === confirmNewPassword) {
+      
+      // console.log(newPassword)
+      const response = await fetch('/api/users/reset/:id', {
         method: 'PUT',
         body: JSON.stringify({ newPassword }),
         headers: { 'Content-Type': 'application/json' },
@@ -15,7 +18,7 @@ const newPassFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert('Please enter a valid password');
+        alert('Please make sure passwords match');
       }
     }
   };
