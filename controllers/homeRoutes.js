@@ -54,7 +54,7 @@ router.get('/request-new-password', (req, res) => {
 })
 
 
-router.get('/password-reset/:id', (req, res) => {
+router.get(`/password-reset?:id`, (req, res) => {
   res.render("passwordreset")
 })
 module.exports = router;

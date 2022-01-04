@@ -6,7 +6,7 @@ const sendEmail = require("../../utils/sendEmail");
 //NOT FINISHED:
 //POST request to '/request-new' for requestPasswordReset
 
-router.post('/request-new', async (req, res) => {
+router.post('/request-new', async (req, res) => { 
   try {
     const validEmail = await User.findOne(
       {
@@ -20,14 +20,12 @@ router.post('/request-new', async (req, res) => {
       return;
     }
     
-    const link = `https://shoestring-app.herokuapp.com/password-reset/${validEmail.id}`;
-    // const link = `localhost:3001/password-reset/${validEmail.id}`;
+    const link = `https://shoestring-app.herokuapp.com/password-reset?${validEmail.id}`;
     await sendEmail(req.body.accountEmail, "Your password reset link", `Here is your link to reset your password: ${link}`);
 
     res.send("password reset link sent to your email account");
     
   } catch (err) {
-    console.log('error-----------------------')
     console.log(err)
     res.status(500).json(err);
   }
@@ -39,14 +37,16 @@ router.post('/request-new', async (req, res) => {
 //PUT request to '/reset' for newPassword to replace old 
 router.put("/reset/:id", async (req, res) => {
   try {
+    
     const newPass = await User.update(
       {
       password: req.body.newPassword
       },
       {
         where: {
-          id: req.params.id
+          id: req.body.id
         },
+        individualHooks: true
       }
     )
     if (!newPass) {
@@ -55,6 +55,7 @@ router.put("/reset/:id", async (req, res) => {
       .json({ message: 'Enter a password, please try again' });
       return;
     }
+
     res.json(newPass)
 
   }catch (err) {

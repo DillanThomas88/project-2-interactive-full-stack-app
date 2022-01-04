@@ -6,6 +6,10 @@ class Customer extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
+  updatePass =  async (newUserData) => {
+    newUserData.newPassword = await bcrypt.hash(newUserData.newPassword, 10);
+    return newUserData;
+  }
 }
 
 Customer.init(
@@ -42,11 +46,11 @@ Customer.init(
   },
   {
     hooks: {
-      beforeUpdate: async (newPasswordData) => {
-        newPasswordData.newPassword = await bcrypt.hash(newPasswordData.newPassword, 10);
-        return newPasswordData;
+      beforeCreate: async (newCustomerData) => {
+        newCustomerData.password = await bcrypt.hash(newCustomerData.password, 10);
+        return newCustomerData;
       },
-      beforeCreate: async (newUserData) => {
+      beforeUpdate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
