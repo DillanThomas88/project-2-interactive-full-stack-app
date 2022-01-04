@@ -10,7 +10,7 @@ const newPassFormHandler = async (event) => {
       try {
         if(newPassword != confirmNewPassword){ return alert("your passwords don't match")}
         const id = window.location.search.substring(1)
-        const response = await fetch('/api/users/reset/:id', {
+        const response = await fetch('/api/put/reset/:id', {
           method: 'PUT',
           body: JSON.stringify({ newPassword, id }),
           headers: { 'Content-Type': 'application/json' },
