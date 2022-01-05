@@ -12,11 +12,11 @@
 </head>
 
 <body>
-  <div class="w-full z-10 opacity-95 fixed text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
+  <div class="w-full z-10 opacity-95 fixed text-gray-700 bg-white">
     <div x-data="{ open: false }"
       class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
-      <div class="p-4 flex flex-row items-center justify-between">
-        <a href="./index.html"
+      <div class="p-2 flex flex-row items-center justify-between">
+        <a href="./login.html"
           class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
           Shoestring </a>
         <span class="p-2 inline-block text-xs"> "The app that makes you feel like you have your life together."</span>
@@ -42,10 +42,9 @@
   </div>
   </div>
 
-  <div class="bg-home-img bg-fixed bg-cover bg-center bg-no-repeat min-h-full md:h-screen flex justify-center">
-    <div class="md:w-auto md:mx-auto m-24 md:m-56 opacity-95">
-      <div
-        class="md:container md:mx-auto bg-white shadow-md rounded mx-auto px-8 pt-6 pb-8 mb-4 md:px-12 md:pt-8 md:pb-12 md:pb-8 flex flex-col">
+  <div class="bg-home-img bg-fixed bg-cover bg-center bg-no-repeat min-h-full h-screen md:h-screen flex justify-center">
+    <div class="flex mx-auto md:w-auto md:mx-auto m-56 md:m-56 opacity-95">
+      <div class="m-auto md:container md:mx-auto bg-white shadow-md rounded mx-auto px-8 pt-6 pb-8 mb-4 md:px-12 md:pt-8 md:pb-12 md:pb-8 flex flex-col">
         <div class="mb-4">
           <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
             Email
@@ -77,33 +76,29 @@
 
   <div class="flex md:w-full">
     <div class="container mx-auto max-w-screen-xl px-4 mx-auto md:px-6 lg:px-8">
-      <h2 class="p-12 md:pt-12 md:pb-12 text-4xl font-bold"> About Shoestring </h2>
+      <h2 class="p-12 text-center md:text-left md:pt-12 md:pb-12 text-4xl font-bold"> What is Shoestring? </h2>
     </div>
   </div>
   <div class="flex flex-wrap justify-center">
-    <div class="pb-12 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-8 divide-gray-300 md:divide-x-2">
-      <div class="p-6 w-80">
-        <h3 class="text-2xl font-bold pb-3"> Who </h3>
-        <p> Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English
-          to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient
-          tool for mock-ups. </p>
+    <div class="pb-12 grid grid-cols-1 md:grid-cols-2 place-items-center gap-0 md:gap-8 m-auto">
+      <div class="p-6 w-80 text-center">
+        <p> Ever had a hard time budgeting your money? This application is here to help you figure out all of your
+          fianancial decisions, and keep track of everything. It's never been so easy!</p>
       </div>
       <div class="p-6 w-80">
-        <h3 class="text-2xl font-bold pb-3"> What </h3>
-        <p> Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English
-          to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient
-          tool for mock-ups. </p>
-      </div>
-      <div class="p-6 w-80">
-        <h3 class="text-2xl font-bold pb-3"> Where </h3>
-        <p> Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English
-          to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient
-          tool for mock-ups. </p>
+        <img src="./img/iphonepreview.png" alt="iphonepreview" title="iphonepreview">
       </div>
     </div>
   </div>
-</body>
 
+  <footer class="text-center text-black bg-gray-300">  
+    <div class="text-center p-2 bg-gray-200xwx">
+      © 2021 Shoestring | <a class="text-white" href="https://github.com/DillanThomas88/project-2-interactive-full-stack-app" target="_blank"> GitHub Repo </a>
+    </div>
+  </footer>
+
+
+</body>
 <script src="./js/login.js"></script>
 
 </html>
