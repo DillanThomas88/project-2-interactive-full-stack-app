@@ -9,7 +9,6 @@ User.hasMany(Accounts, {
     foreignkey: "user_id",
     onDelete: "CASCADE",
 })
-
 Accounts.belongsTo(User, {
     foreignKey: "user_id",
 })
@@ -34,9 +33,6 @@ User.hasMany(Debt, {
 Debt.belongsTo(User, {
     foreignKey: "user_id",
 })
-
-
-
 
 
 module.exports = { User, Accounts, Cards, Bills, Debt };

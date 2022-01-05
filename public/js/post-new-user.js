@@ -12,7 +12,9 @@ const signUpFormHandler = async (event) => {
       first_name: firstName,
       last_name: lastName,
       email: email,
-      password: password
+      password: password,
+      pay_day: "mm/dd/yyyy",
+      monthly_income: 0,
     }
     console.log(user)
       const response = await fetch('/api/post/signup', {

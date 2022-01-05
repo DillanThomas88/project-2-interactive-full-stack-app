@@ -25,10 +25,51 @@
   },
   {
     "user_id": 1,
-    "name": "HEALTH INSURANCE",
-    "cost": 390,
-    "due_date": "1/25/2022",
+    "name": "RENT",
+    "cost": 1200,
+    "due_date": "1/3/2022",
+    "auto_pay": true,
+    "debited": false
+  },
+  {
+    "user_id": 1,
+    "name": "SDG&E",
+    "cost": 80,
+    "due_date": "1/15/2022",
+    "auto_pay": false,
+    "debited": true
+  },
+  {
+    "user_id": 1,
+    "name": "NISSAN",
+    "cost": 1600,
+    "due_date": "1/2/2022",
+    "auto_pay": true,
+    "debited": false
+  },
+  {
+    "user_id": 1,
+    "name": "RENT",
+    "cost": 1200,
+    "due_date": "1/3/2022",
+    "auto_pay": true,
+    "debited": false
+  },
+  {
+    "user_id": 1,
+    "name": "SDG&E",
+    "cost": 80,
+    "due_date": "1/15/2022",
+    "auto_pay": false,
+    "debited": true
+  },
+  {
+    "user_id": 1,
+    "name": "NISSAN",
+    "cost": 1600,
+    "due_date": "1/2/2022",
     "auto_pay": true,
     "debited": false
   }
+
 ]

@@ -1,11 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Bills extends Model {
-//   checkPassword(loginPw) {
-//     return bcrypt.compareSync(loginPw, this.password);
-//   }
-}
+class Bills extends Model {}
 
 Bills.init(
   {
@@ -41,7 +37,6 @@ Bills.init(
     }
   },
   {
-
     sequelize,
     timestamps: false,
     freezeTableName: true,
