@@ -17,7 +17,7 @@ router.post('/bills', (req, res) => {
 router.delete('/bills/', (req, res) => {
     Bills.destroy({
         where: {
-            id: req.body.id, //something like event.element...?///
+            id: req.body.id,
         },
     })
         .then((deletedBills) => {
