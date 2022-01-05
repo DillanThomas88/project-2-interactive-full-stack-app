@@ -33,7 +33,7 @@
       <p class="text-lg sm:text-xl md:text-xl font-light"> Savings </p>
     </div>
   </div>
-  <div class="md:p-7 flex bg-orange-100 justify-center md:w-4/12">
+  <div class="md:p-7 flex bg-gray-100 justify-center md:w-4/12">
     <div class="m-auto">
       <p class="text-xl sm:text-2xl md:text-4xl"> $500 </p>
       <p class="text-lg sm:text-xl md:text-xl"> Credit Card </p>
@@ -108,18 +108,18 @@
   <div class="md:p-1 md:h-96 md:w-2/6 grid md:gap-24">
     <div class="grid grid-row-2 md:grid-row-2 divide-y divide-gray-300">
       <div class="text-gray-500">
-        <p class="md:p-1 text-xl sm:text-2xl md:text-base"> Total Monthly Income <span class="float-right"> $5,000
-          </span></p>
-        <p class="md:p-1 text-lg sm:text-xl md:text-base"> Total Monthly Bills <span class="float-right"> $3,000 </span>
+        <p class="md:p-1 text-xl sm:text-2xl md:text-base"> Total Monthly Income <span id="monthly-income" class="float-right">3000</span></p>
+        <p class="md:p-1 text-lg sm:text-xl md:text-base"> Total Monthly Bills <span id="monthly-bills"
+            class="float-right">{{#each data.bills}}{{cost}},{{/each}}</span>
         </p>
       </div>
       <div>
-        <p class="md:p-1 md:text-base"> Leaves <span class="float-right"> $2,000 </span></p>
+        <p class="md:p-1 md:text-base"> Leaves <span id="leaves" class="float-right"> $2,000 </span></p>
       </div>
     </div>
     <div class="grid grid-row-2 md:grid-row-2 divide-y divide-gray-300">
       <div class="text-gray-500">
-        <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> Next Payday <span class="float-right "> January 7,
+        <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> Next Payday <span id="formal-date" class="float-right "> January 7,
             2022 </span></p>
         <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> Bills Due Before 7th <span class="float-right "> $500
           </span></p>
@@ -132,6 +132,11 @@
   </div>
 </div>
 
+<script>
 
+  
 
+</script>
+
+<script src="/js/maths/maths.js"></script>
 <script src="/js/logout.js"></script>
