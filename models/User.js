@@ -47,6 +47,18 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    checking: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    savings: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    credit_card: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     hooks: {
