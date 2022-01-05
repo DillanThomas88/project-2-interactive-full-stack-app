@@ -15,7 +15,7 @@ const signUpFormHandler = async (event) => {
       password: password
     }
     console.log(user)
-      const response = await fetch('/api/users/signup', {
+      const response = await fetch('/api/post/signup', {
         method: 'POST',
         body: JSON.stringify(user),
         headers: { 'Content-Type': 'application/json' },
@@ -24,7 +24,7 @@ const signUpFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/')
       } else {
-        alert('Please enter all  required fields')
+        alert('User already exists. Please log in or sign up with a different email.')
       }
     }
   }

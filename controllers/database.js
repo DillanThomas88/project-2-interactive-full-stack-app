@@ -5,10 +5,12 @@ router.get('/', async (req, res) => {
     try {
       let isdatabase = true
   
-      let data = await User.findAll()
-  
-      let serializedData = data.map(blog=> blog.get({plain:true}))
-  
+      const data = await User.findAll({
+        // include: [{ model: Bills},{model: Accounts},{model: Debt},{model:Cards}],
+      });
+
+      let serializedData = data.map(data=> data.get({plain:true}))
+      
      res.render("database", {data:serializedData, isdatabase})
     } catch (err) {
       res.status(500).json(err);

@@ -1,5 +1,4 @@
 //Change routes, have success/fail message append to the page rather than the alert? //
-//Figure out how to trigger an email//
 
 const requestPassResetFormHandler = async (event) => {
     event.preventDefault();
@@ -7,7 +6,7 @@ const requestPassResetFormHandler = async (event) => {
     const accountEmail = document.querySelector('#email-login').value.trim();
   
     if (accountEmail) {
-      const response = await fetch('/api/users/request-new', {
+      const response = await fetch('/api/post/request-new', {
         method: 'POST',
         body: JSON.stringify({ accountEmail }),
         headers: { 'Content-Type': 'application/json' },
@@ -22,5 +21,7 @@ const requestPassResetFormHandler = async (event) => {
   };
   
   document
-    .querySelector('#request-pass-reset-button')
+    .querySelector('#request-reset')
     .addEventListener('click', requestPassResetFormHandler);
+
+

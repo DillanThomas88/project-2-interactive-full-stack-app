@@ -1,27 +1,30 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Bills, Accounts, Debt, Cards } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
+  console.log(req.session.user_id)
 
   try {
     if (!req.session.logged_in) {
       res.redirect('/login');
     } else {
       let logged_in = req.session.logged_in
+      let isUser = true
+      // const data = await User.findOne({ where: { id: req.session.user_id },
+      const user = await User.findByPk(req.session.user_id, {
+        include: [
+          { model: Bills }, 
+          { model: Accounts }, 
+          { model: Debt }, 
+          { model: Cards }],
+      });
+      const userData = await user.get({ plain: true })
 
-      let data = await User.findAll(
-        // where:[],
-        // include:[
-        //   {model: bill, as :"bill"},
-        //   {model: loan, as :"loan"}
-        // ]
-      )
 
-      let serializedData = data.map(data=> data.get({plain:true}))
-
-      res.render('user', {data:serializedData, logged_in})
-      res.redirect('user')
+      console.log("USER DATA --- ", userData)
+      // res.status(200).json(serializedData)
+      res.render('user', { data: userData, isUser })
     }
 
   } catch (err) {
@@ -30,8 +33,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
+  console.log(req.session.logged_in, req.session.user_id)
   if (req.session.logged_in) {
-    res.redirect('/user');
+    res.redirect('/');
     return;
   }
 
@@ -47,6 +51,16 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/user', withAuth, (req, res) => {
-  res.render("user")
+  res.render("user",)
 })
+
+router.get('/request-new-password', (req, res) => {
+  res.render("requestreset")
+})
+
+router.get(`/password-reset?:id`, (req, res) => {
+  res.render("passwordreset")
+})
+
+
 module.exports = router;
