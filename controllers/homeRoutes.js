@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
       });
       const userData = await user.get({ plain: true })
 
-
+      // res.status(200).json(userData)
       console.log("USER DATA --- ", userData)
       // res.status(200).json(serializedData)
       res.render('user', { data: userData, logged_in })
