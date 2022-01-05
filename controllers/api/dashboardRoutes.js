@@ -17,7 +17,7 @@ router.post('/bills', (req, res) => {
 router.delete('/bills', (req, res) => {
     Bills.destroy({
         where: {
-            name: req.body,
+            bill_id: req.body.id, //something like event.element...?///
         },
     })
         .then((deletedBills) => {
@@ -26,28 +26,41 @@ router.delete('/bills', (req, res) => {
         .catch((err) => res.json(err));
 });
 
-router.delete('/debt', (req, res) => {
-    Debt.destroy({
-        where: {
-            name: req.body,
-        },
-    })
-        .then((deletedDebt) => {
-            res.json(deletedDebt);
-        })
-        .catch((err) => res.json(err));
-});
+// router.delete('/debt', (req, res) => {
+//     Debt.destroy({
+//         where: {
+//             name: req.body,
+//         },
+//     })
+//         .then((deletedDebt) => {
+//             res.json(deletedDebt);
+//         })
+//         .catch((err) => res.json(err));
+// });
 
 
 //////PUTS///////
-router.put('/accounts', (req, res) => {
+router.put('/checking-account', (req, res) => {
     Accounts.update({
-        checking: req.body.checking,
-        savings: req.body.savings,
+        amount: req.body.amount,
     },
         {
             where: {
-                user_id: req.body.user_id
+                user_id: req.session.user_id,
+                accounts_name: req.body.name
+            }
+        }).then((accountUpdate) => res.json(accountUpdate))
+
+});
+
+router.put('/savings-account', (req, res) => {
+    Accounts.update({
+        amount: req.body.amount,
+    },
+        {
+            where: {
+                user_id: req.session.user_id,
+                accounts_name: req.body.name
             }
         }).then((accountUpdate) => res.json(accountUpdate))
 
