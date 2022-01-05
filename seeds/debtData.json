@@ -1,0 +1,29 @@
+[
+    {
+      "user_id": 1,
+      "name": "Sallie Mae Loan",
+      "cost": 13000,
+      "due_date": "1/3/2022",
+      "payments": 25,
+      "auto_pay": true,
+      "debited": false
+    },
+    {
+      "user_id": 1,
+      "name": "US Dept. of Education Loan",
+      "cost": 25000,
+      "due_date": "1/2/2022",
+      "payments": 175,
+      "auto_pay": true,
+      "debited": false
+    },
+    {
+      "user_id": 1,
+      "name": "Mom",
+      "cost": 3000,
+      "due_date": "1/15/2022",
+      "payments": 100,
+      "auto_pay": true,
+      "debited": false
+    }
+]
