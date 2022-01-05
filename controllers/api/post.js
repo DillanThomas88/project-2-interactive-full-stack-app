@@ -35,10 +35,34 @@ router.post('/login', async (req, res) => {
 
         });
 
+        // if(userData.accounts === undefined){
+        //     console.log('hit')
+        //     let accounts = {
+        //         checking: "Checking",
+        //         savings: "Savings",
+        //         amount: 0
+        //       }
+            
+        //       const response = await fetch('/api/post/accounts', {
+        //         method: 'POST',
+        //         body: JSON.stringify(accounts),
+        //         headers: { 'Content-Type': 'application/json' },
+        //       });
+            
+        //       if (response.ok) {
+        //           res.json(response)
+        //       } else {
+        //         alert('User already exists. Please log in or sign up with a different email.')
+        //       }
+        // }
+
+
+
     } catch (err) {
         console.log(err)
         res.status(500).json(err);
     }
+
 });
 
 router.post('/signup', async (req, res) => {

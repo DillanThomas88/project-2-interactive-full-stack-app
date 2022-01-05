@@ -1,12 +1,14 @@
 const deleteBillsHandler = async (event) => {
     event.preventDefault();
+    let target = { id: event.target.getAttribute('id')}
 
-    const billToDelete = document.querySelector('#bill-name').value.trim();
+    // const billToDelete = target.getAttribute('id')
+    console.log(target)
 
     try {
-        const response = await fetch('/api/bills/', {
+        const response = await fetch('/api/dash/bills/', {
             method: 'DELETE',
-            body: JSON.stringify({ billToDelete }),
+            body: JSON.stringify(target),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -19,10 +21,12 @@ const deleteBillsHandler = async (event) => {
     }
 }
 
-document
-    .querySelector('#kill-bill')
-    .addEventListener('click', deleteBillsHandler);
+const billsDB = document
+    .querySelectorAll('.kill-bill')
 
+    billsDB.forEach(element => {
+        element.addEventListener('click', deleteBillsHandler)
+    });
 ///////
 
     const deleteDebtHandler = async (event) => {
@@ -46,6 +50,6 @@ document
         }
     }
     
-    document
-        .querySelector('#kill-debt')
-        .addEventListener('click', deleteDebtHandler);
+    // document
+    //     .querySelector('.kill-debt')
+    //     .addEventListener('click', deleteDebtHandler);
