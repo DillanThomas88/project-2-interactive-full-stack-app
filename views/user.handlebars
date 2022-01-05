@@ -176,8 +176,8 @@
       <div class=" grid grid-row-2 md:grid-row-2 divide-y divide-gray-300">
         <div class="text-black">
 
-          <p class="md:p-1 text-xl sm:text-2xl md:text-base bg-gray-100"> Total Monthly Income <input
-              id="monthly-income" class="float-right text-right w-20 bg-gray-100 text-black" placeholder="$0"></input> </p>
+          <p class="md:p-1 text-xl sm:text-2xl md:text-base bg-gray-100"> Total Monthly Income <span><span style="cursor: pointer;" class="float-right pl-3"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span> <input
+              id="monthly-income" class="float-right text-right w-20 bg-gray-100 text-black" placeholder="$0"></input></span>  </p>
 
           <p class="md:p-1 text-lg sm:text-xl md:text-base"> Total Monthly Bills <span id="monthly-bills"
               class="float-right">{{#each data.bills}}{{cost}},{{/each}}</span>
@@ -191,14 +191,14 @@
         </div>
           
       </div>
-      
+
       <div class="grid grid-row-2 md:grid-row-2 divide-y divide-gray-300">
         <div class="text-black">
           <label>
             <span class="md:p-1 text-xl sm:text-2xl md:text-lg bg-gray-100"> Next Payday </span>
             <div class="float-right">
               <input type="date" value="mm/dd/yyyy" min="2022-01-01" max="2099-12-31"
-                class="border p-0 w-60 form-input mt-1 block w-full bg-gray-100" placeholder="Ex. 1/1/2022">
+                class="border p-0 w-50 form-input mt-1 block w-full bg-gray-100 text-right" placeholder="Ex. 1/1/2022">
             </div>
           </label>
           <p id="due-before" class="md:p-1 text-xl sm:text-2xl md:text-lg"> Bills Due Before 7th <span
@@ -217,45 +217,4 @@
 <footer class="p-20"></footer>
 <script src="/js/maths/maths.js"></script>
 <script src="/js/put-logout.js"></script>
-<script>
-
-  var openmodal = document.querySelectorAll('.modal-open')
-  for (var i = 0; i < openmodal.length; i++) {
-    openmodal[i].addEventListener('click', function (event) {
-      event.preventDefault()
-      toggleModal()
-    })
-  }
-
-  const overlay = document.querySelector('.modal-overlay')
-  overlay.addEventListener('click', toggleModal)
-
-  var closemodal = document.querySelectorAll('.modal-close')
-  for (var i = 0; i < closemodal.length; i++) {
-    closemodal[i].addEventListener('click', toggleModal)
-  }
-
-  document.onkeydown = function (evt) {
-    evt = evt || window.event
-    var isEscape = false
-    if ("key" in evt) {
-      isEscape = (evt.key === "Escape" || evt.key === "Esc")
-    } else {
-      isEscape = (evt.keyCode === 27)
-    }
-    if (isEscape && document.body.classList.contains('modal-active')) {
-      toggleModal()
-    }
-  };
-
-
-  function toggleModal() {
-    const body = document.querySelector('body')
-    const modal = document.querySelector('.modal')
-    modal.classList.toggle('opacity-0')
-    modal.classList.toggle('pointer-events-none')
-    body.classList.toggle('modal-active')
-  }
-
-
-</script>
+<script src="/js/modal.js"></script>
