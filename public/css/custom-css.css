@@ -5,9 +5,9 @@
     --soft: rgb(54, 54, 54);
     --light: rgb(236, 236, 236);
     --clickable: rgb(235, 235, 235);
-    --light-border: rgb(153, 153, 153);
+    --light-border: #141414;
 
-    --primary: #6b39ad;
+    --primary: #39c367;
     --secondary: #5d77cc;
     --focal: #475ac7;
     --detail: #838383;

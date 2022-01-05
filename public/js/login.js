@@ -13,7 +13,7 @@ const loginFormHandler = async (event) => {
     }
     console.log(loginObject)
     if (userEmail && userPassword) {
-      const response = await fetch('api/users/login', {
+      const response = await fetch('api/post/login', {
         method: 'POST',
         body: JSON.stringify(loginObject),
         headers: { 'Content-Type': 'application/json' },
@@ -27,6 +27,8 @@ const loginFormHandler = async (event) => {
       }
     }
   };
+
+  
   
   document
     .querySelector('#login-button')
