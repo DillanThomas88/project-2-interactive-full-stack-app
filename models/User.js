@@ -30,14 +30,22 @@ User.init(
       unique: true,
       validate: {
         isEmail: true,
-      },
+    },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [8],
-      },
+    },
+    },
+    pay_day: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    monthly_income: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   {
