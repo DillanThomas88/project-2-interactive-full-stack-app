@@ -4,8 +4,8 @@ const accountHandler = async (event) => {
   event.preventDefault()
   let target = event.element
 
-  const accountName = target.parentElement.children[0].textContent
-  console.log(accountName)
+  // const accountName = target.parentElement.children[0].textContent
+  // console.log(accountName)
   const accountBalance = document.querySelector('#checking-account-amount').value.trim()
 
 
@@ -15,7 +15,7 @@ const accountHandler = async (event) => {
       amount: accountBalance,
     }
     console.log(accountData)
-    const response = await fetch('/api/account', {
+    const response = await fetch('/api/dash/account', {
       method: 'PUT',
       body: JSON.stringify(accountData),
       headers: { 'Content-Type': 'application/json' },

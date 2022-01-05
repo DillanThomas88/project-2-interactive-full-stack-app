@@ -10,6 +10,7 @@ const newCheckingEL = document.querySelector('#new-checking')
 
 const billCostEL = document.querySelectorAll('.bill-cost')
 const billNameEL = document.querySelectorAll('.bill-name')
+const informalDueDatesEL = document.querySelectorAll('.informal-due-date')
 
 
 billCostEL.forEach(element => {   
@@ -18,21 +19,29 @@ billCostEL.forEach(element => {
     element.textContent = `$${x}`
 });
 
+informalDueDatesEL.forEach(element => {
+  let x = element.innerHTML.split("-")
+  let y = [`${x[1]}/`,`${x[2]}/`,`${x[0]}`].join('')
+  element.textContent = y
+});
 // not finished!
-// billNameEL.forEach(element => {
-//   let arr = element.split("")
-//   let index = undefined
-//       for(let i = 0; i < arr.length; i++) {
-//         const element = arr[i];
-//         if(element === "&"){ index = i}
-//       }
-//       let arr2 = arr.filter(data => data != "&").map(data => data.toUpperCase())
-//       if(index != undefined){
-//         arr = arr2.splice(index,0, "&") 
-//       }
+billNameEL.forEach(element => {
+  let arr = element.innerHTML.split("")
+  // console.log(arr)
+  let index = undefined
+      for(let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        if(element === "&"){ index = i}
+      }
+      arr = arr.filter(data => data != "&").map(data => data.toUpperCase())
+      if(index != undefined){
+        arr = arr.splice(index,0, "&") 
+      }
 
-//   element.textContent = `${arr.join("")}`
-// })
+  element.textContent = `${arr.join("")}`
+})
+
+
 
 
 const leftOverCalculation = () => {
@@ -41,7 +50,7 @@ const leftOverCalculation = () => {
   arr.forEach(element => {
     x += element
   });
-  console.log(x);
+  // console.log(x);
   
   let income = monthlyincomeEL.innerHTML
   let billtotal = x

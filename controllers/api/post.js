@@ -1,26 +1,29 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Accounts } = require('../../models');
 
 const sendEmail = require("../../utils/sendEmail");
 
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.findOne({ where: { email: req.body.email } });
-        // console.log(userData)
+        const userData = await User.findOne({
+            where: { email: req.body.email },
+            include: [{ model: Accounts }]
+        });
         if (!userData) {
             res
-                .status(400)
-                .json({ message: 'Incorrect email or password, please try again' });
+            .status(400)
+            .json({ message: 'Incorrect email or password, please try again' });
             return;
         }
-
+        console.log(userData)
+        
         const validPassword = userData.checkPassword(req.body.password);
-
+        
         if (!validPassword) {
             res
-                .status(400)
-                .json({ message: 'Incorrect email or password, please try again' });
-
+            .status(400)
+            .json({ message: 'Incorrect email or password, please try again' });
+            
             return;
         }
         req.session.logged_in = true
@@ -34,26 +37,25 @@ router.post('/login', async (req, res) => {
             console.log(req.session)
 
         });
-
-        // if(userData.accounts === undefined){
+        // if (userData.accounts === undefined) {
         //     console.log('hit')
         //     let accounts = {
         //         checking: "Checking",
         //         savings: "Savings",
         //         amount: 0
-        //       }
-            
-        //       const response = await fetch('/api/post/accounts', {
+        //     }
+
+        //     const response = await fetch('/api/post/accounts', {
         //         method: 'POST',
         //         body: JSON.stringify(accounts),
         //         headers: { 'Content-Type': 'application/json' },
-        //       });
-            
-        //       if (response.ok) {
-        //           res.json(response)
-        //       } else {
+        //     });
+
+        //     if (response.ok) {
+        //         res.json(response)
+        //     } else {
         //         alert('User already exists. Please log in or sign up with a different email.')
-        //       }
+        //     }
         // }
 
 

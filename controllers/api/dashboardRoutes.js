@@ -4,6 +4,7 @@ const { Bills, Debt, Accounts, Cards, User } = require('../../models');
 /////POST////////
 router.post('/bills', (req, res) => {
     req.body.user_id = req.session.user_id
+    console.log(req.body)
     Bills.create(req.body);
     res.redirect('/')
 
