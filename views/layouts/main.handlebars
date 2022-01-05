@@ -12,16 +12,30 @@
   <link href="./css/maintailwind/tailwind/output.css" rel="stylesheet">
   <link href="./css/index3.css" rel="stylesheet">
   <title> Shoestring </title>
+  <style>
+    .modal {
+      transition: opacity 0.25s ease;
+    }
+    body.modal-active {
+      overflow-x: hidden;
+      overflow-y: visible !important;
+    }
+  </style>
 </head>
 
 
 <body style="background-color: #ffffff">
 
   <header>
-    <div style="backdrop-filter: blur(8px) ; background-color: rgba(51, 131, 223, 0.061);" class="shadow-md w-full z-10 opacity-98 fixed text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
+    {{#if data}}
+    <div style="backdrop-filter: blur(8px) ; background-color: #ffffff13;" class="shadow-md w-full z-10 opacity-98 fixed text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
+    {{else}}
+    <div style="background-color: #ffffff;" class="shadow-md w-full z-10 opacity-98 fixed text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
+    {{/if}}
+    
       <div x-data="{ open: false }"
         class="flex flex-col max-w-screen-2xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
-        <div class="p-4 flex flex-row items-center justify-between">
+        <div class="p-2 flex flex-row items-center justify-between">
           {{#if isdatabase}}
           <svg id="logo-flare" width="35pt" height="35pt" version="1.1" viewBox="0 0 128 128"
             xmlns="http://www.w3.org/2000/svg">
@@ -101,5 +115,10 @@
   </footer>
 </body>
 <script src="./js/flare/animation.js"></script>
+
+<script>
+    var isUser = "{{logged_in}}"
+  console.log(isUser)
+</script>
 
 </html>

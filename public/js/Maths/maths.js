@@ -1,3 +1,4 @@
+
 const monthlybillsEL = document.querySelector('#monthly-bills')
 const monthlyincomeEL = document.querySelector('#monthly-income')
 const leaves = document.querySelector('#leaves')
@@ -20,8 +21,9 @@ const leftOverCalculation = () => {
   arr.forEach(element => {
     x += element
   });
+  console.log(x);
   
-  let income = monthlyincomeEL.value
+  let income = monthlyincomeEL.innerHTML
   let billtotal = x
   let leftover = income - billtotal
 

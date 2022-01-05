@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
       res.redirect('/login');
     } else {
       let logged_in = req.session.logged_in
-      let isUser = true
       // const data = await User.findOne({ where: { id: req.session.user_id },
       const user = await User.findByPk(req.session.user_id, {
         include: [
@@ -24,7 +23,7 @@ router.get('/', async (req, res) => {
 
       console.log("USER DATA --- ", userData)
       // res.status(200).json(serializedData)
-      res.render('user', { data: userData, isUser })
+      res.render('user', { data: userData, logged_in })
     }
 
   } catch (err) {
