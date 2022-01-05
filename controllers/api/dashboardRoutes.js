@@ -14,10 +14,10 @@ router.post('/bills', (req, res) => {
 
 
 ////DELETES/////
-router.delete('/bills', (req, res) => {
+router.delete('/bills/', (req, res) => {
     Bills.destroy({
         where: {
-            bill_id: req.body.id, //something like event.element...?///
+            id: req.body.id, //something like event.element...?///
         },
     })
         .then((deletedBills) => {
@@ -40,7 +40,7 @@ router.delete('/bills', (req, res) => {
 
 
 //////PUTS///////
-router.put('/checking-account', (req, res) => {
+router.put('/account', (req, res) => {
     Accounts.update({
         amount: req.body.amount,
     },
@@ -68,11 +68,13 @@ router.put('/savings-account', (req, res) => {
 
 router.put('/cards', (req, res) => {
     Cards.update({
-        card: req.body.card,
+        name: req.body.name,
+        amount: req.body.amount,
+        due_date: req.body.due_date,
     },
         {
             where: {
-                user_id: req.body.user_id
+                cards_id: 1
             }
         }).then((cardUpdate) => res.json(cardUpdate))
 
@@ -84,7 +86,7 @@ router.put('/payday', (req, res) => {
     },
         {
             where: {
-                user_id: req.body.user_id
+                user_id: req.session.user_id
             }
         }).then((paydayUpdate) => res.json(paydayUpdate))
 
@@ -96,10 +98,10 @@ router.put('/income', (req, res) => {
     },
         {
             where: {
-                user_id: req.body.user_id
+                user_id: req.session.user_id
             }
         }).then((incomeUpdate) => res.json(incomeUpdate))
 
 });
 
-module.exports = router
+module.exports = router 

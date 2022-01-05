@@ -1,50 +1,20 @@
 ///ADD CHECKING AND SAVINGS INFO ///
 
-const checkingAccountHandler = async (event) => {
+const accountHandler = async (event) => {
   event.preventDefault()
+  let target = event.element
 
-  const checkingAccount = document.querySelector('#checking-account')
-  const checkingAccountBalance = document.querySelector('#checking-account-amount').value.trim()
+  const accountName = target.parentElement.textContent
+  const accountBalance = document.querySelector('#checking-account-amount').value.trim()
 
 
-  if (checkingAccount && checkingAccountBalance) {
-    let checkingAccountData = {
-      name: checkingAccount,
-      amount: checkingAccountBalance,
+  if (accountBalance) {
+    let accountData = {
+      name: accountName,
+      amount: accountBalance,
     }
-    console.log(checkingAccountData)
-    const response = await fetch('/api/checking-account', {
-      method: 'PUT',
-      body: JSON.stringify(checkingAccountData),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      document.location.replace('/')
-    } else {
-      alert('Please enter amounts for checking and savings.')
-    }
-  }
-}
-document
-  .querySelector('#checking-account-save-button')
-  .addEventListener('click', checkingAccountHandler)
-
-//////
-const savingsAccountsHandler = async (event) => {
-  event.preventDefault()
-
-  const savingsAccount = document.querySelector('#savings-account')
-  const savingsAccountBalance = document.querySelector('#savings-account-amount').value.trim()
-
-
-  if (savingsAccount && savingsAccountBalance) {
-    let savingsAccountData = {
-      name: savingsAccount,
-      amount: savingsAccountBalance,
-    }
-    console.log(savingsAccountData)
-    const response = await fetch('/api/savings-account', {
+    console.log(accountData)
+    const response = await fetch('/api/account', {
       method: 'PUT',
       body: JSON.stringify(accountData),
       headers: { 'Content-Type': 'application/json' },
@@ -53,13 +23,14 @@ const savingsAccountsHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/')
     } else {
-      alert('Please enter amounts for checking and savings.')
+      alert('Please enter an amount.')
     }
   }
 }
 document
-  .querySelector('#savings-account-save-button')
-  .addEventListener('click', savingsAccountsHandler)
+  .querySelectorAll('.account-save-button')
+  .addEventListener('click', accountHandler)
+
 
 
 ///ADD BILLS ///
@@ -98,13 +69,13 @@ document
   .querySelector('#bill-save-button')
   .addEventListener('click', billsHandler)
 
-////ADD CARDS////
+////ADD CARDS////Need to initialize with sample info at id: 1
 const cardsHandler = async (event) => {
   event.preventDefault()
 
-  const cardName = document.querySelector('#bill-name').value.trim()
-  const cardAmount = document.querySelector('#bill-cost').value.trim()
-  const cardDueDate = document.querySelector('#bill-due-date').value.trim()
+  const cardName = document.querySelector('#card-name').value.trim()
+  const cardAmount = document.querySelector('#card-amount').value.trim()
+  const cardDueDate = document.querySelector('#card-due-date').value.trim()
 
 
   if (cardName && cardAmount && cardDueDate) {
@@ -115,7 +86,7 @@ const cardsHandler = async (event) => {
     }
     console.log(cardInfo)
     const response = await fetch('/api/cards', {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(cardInfo),
       headers: { 'Content-Type': 'application/json' },
     });
@@ -152,7 +123,7 @@ const incomeHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/')
     } else {
-      alert('Please complete all fields.')
+      alert('Please enter a value.')
     }
   }
 }
@@ -174,7 +145,7 @@ const paydayHandler = async (event) => {
       payday: paydayData,
     }
     console.log(paydayData)
-    const response = await fetch('/api/income', {
+    const response = await fetch('/api/payday', {
       method: 'PUT',
       body: JSON.stringify(paydayData),
       headers: { 'Content-Type': 'application/json' },
@@ -183,7 +154,7 @@ const paydayHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/')
     } else {
-      alert('Please complete all fields.')
+      alert('Please enter a value.')
     }
   }
 }
