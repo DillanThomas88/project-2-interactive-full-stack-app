@@ -44,7 +44,7 @@
 
 <div class="flex m-auto justify-around md:p-2 items-center font-monster md:w-screen max-w-screen-2xl">
   <div class="md:mt-6 flex bg-white md:w-7/12">
-    <div class="overflow-y-auto md:h-96 md:w-screen">
+    <div class=" md:w-screen">
 
 
       <div class="pb-4">
@@ -105,38 +105,38 @@
 
 
 
-  <div class="md:p-1 md:h-96 md:w-2/6 grid md:gap-24">
-    <div class="grid grid-row-2 md:grid-row-2 divide-y divide-gray-300">
-      <div class="text-gray-500">
-        <p class="md:p-1 text-xl sm:text-2xl md:text-base"> Total Monthly Income <span id="monthly-income" class="float-right">3000</span></p>
-        <p class="md:p-1 text-lg sm:text-xl md:text-base"> Total Monthly Bills <span id="monthly-bills"
-            class="float-right">{{#each data.bills}}{{cost}},{{/each}}</span>
-        </p>
+  <div style="margin-top: 60px;" class=" flex self-start md:p-1 md:h-96 md:w-2/6 grid md:gap-24">
+    <div class="md:fixed md:w-2/6">
+      <div class=" grid grid-row-2 md:grid-row-2 divide-y divide-gray-300">
+        <div class="text-gray-500">
+          <p class="md:p-1 text-xl sm:text-2xl md:text-base"> Total Monthly Income <input id="monthly-income"
+              class="float-right text-right w-20" placeholder="ex. 5000"></input> <button class="float-right mr-10 bg-orange-100">Calculate</button> </p>
+              
+          <p class="md:p-1 text-lg sm:text-xl md:text-base"> Total Monthly Bills <span id="monthly-bills"
+              class="float-right">{{#each data.bills}}{{cost}},{{/each}}</span>
+          </p>
+        </div>
+        <div>
+          <p class="md:p-1 md:pb-40 md:text-base"> Leaves <span id="leaves" class="float-right"> $2,000 </span></p>
+        </div>
       </div>
-      <div>
-        <p class="md:p-1 md:text-base"> Leaves <span id="leaves" class="float-right"> $2,000 </span></p>
-      </div>
-    </div>
-    <div class="grid grid-row-2 md:grid-row-2 divide-y divide-gray-300">
-      <div class="text-gray-500">
-        <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> Next Payday <span id="formal-date" class="float-right "> January 7,
-            2022 </span></p>
-        <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> Bills Due Before 7th <span class="float-right "> $500
-          </span></p>
-      </div>
-      <div>
-        <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> New Checking Balance <span
-            class="float-right text-bold md:text-2xl"> $7,500 </span></p>
+      <div class="grid grid-row-2 md:grid-row-2 divide-y divide-gray-300">
+        <div class="text-gray-500">
+          <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> Next Payday <span id="formal-due" class="float-right ">
+              January 7,
+              2022 </span></p>
+          <p id="due-before" class="md:p-1 text-xl sm:text-2xl md:text-lg"> Bills Due Before 7th <span class="float-right "> $500
+            </span></p>
+        </div>
+        <div>
+          <p class="md:p-1 text-xl sm:text-2xl md:text-lg"> New Checking Balance <span id="new-checking"
+              class="float-right text-bold md:text-2xl"> $7,500 </span></p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-
-  
-
-</script>
-
+<footer class="p-20"></footer>
 <script src="/js/maths/maths.js"></script>
-<script src="/js/logout.js"></script>
+<script src="/js/put-logout.js"></script>

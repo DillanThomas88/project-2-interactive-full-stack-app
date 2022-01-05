@@ -3,6 +3,10 @@ const monthlyincomeEL = document.querySelector('#monthly-income')
 const leaves = document.querySelector('#leaves')
 const checkingEL = document.querySelector('#checking-account')
 
+const dueDateEL = document.querySelector('#formal-due')
+const beforeEL = document.querySelector('#due-before')
+const newCheckingEL = document.querySelector('#new-checking')
+
 
 
 
@@ -17,7 +21,7 @@ const leftOverCalculation = () => {
     x += element
   });
   
-  let income = parseInt(monthlyincomeEL.innerHTML)
+  let income = monthlyincomeEL.value
   let billtotal = x
   let leftover = income - billtotal
 
