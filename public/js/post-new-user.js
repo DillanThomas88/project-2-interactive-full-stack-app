@@ -17,7 +17,9 @@ const signUpFormHandler = async (event) => {
       monthly_income: 0,
       checking: 0,
       savings: 0,
-      credit_card: 0
+      credit_card: 0,
+      bills_before: 0,
+      new_checking: 0
     }
 
     const response = await fetch('/api/post/signup', {
