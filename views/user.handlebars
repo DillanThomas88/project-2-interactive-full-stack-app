@@ -24,7 +24,7 @@
 <div class="flex m-auto justify-around md:p-4 items-center font-monster md:w-screen max-w-screen-2xl">
   <div class="md:p-10 flex bg-blue-100 md:w-7/12 md:h-7/12">
     <div class="m-auto">
-      <p class="text-xl sm:text-2xl md:text-4xl font-light"> $0</p>
+      <p contenteditable="true"  class="text-xl sm:text-2xl md:text-4xl font-light"> ${{data.checking}}</p>
       <p class="text-lg sm:text-xl md:text-xl font-light"> <span>Checking</span> <span style="cursor: pointer;"
           class="account-save-button float-right pl-3"><svg style="pointer-events: none;" xmlns="http://www.w3.org/2000/svg" height="24px"
             viewBox="0 0 24 24" width="24px" fill="#000000">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="m-auto">
-      <p class="text-xl sm:text-2xl md:text-4xl"> $0</p>
+      <p contenteditable="true" class="text-xl sm:text-2xl md:text-4xl"> ${{data.savings}}</p>
       <p class="text-lg sm:text-xl md:text-xl font-light"> <span>Savings</span> <span style="cursor: pointer;"
           class="account-save-button float-right pl-3 "><svg style="pointer-events: none;" xmlns="http://www.w3.org/2000/svg" height="24px"
             viewBox="0 0 24 24" width="24px" fill="#000000">
@@ -47,8 +47,14 @@
   </div>
   <div class="md:p-7 flex bg-gray-100 justify-center md:w-4/12">
     <div class="m-auto">
-      <p class="text-xl sm:text-2xl md:text-4xl"> $0 </p>
-      <p class="text-lg sm:text-xl md:text-xl"> Credit Card </p>
+      <p contenteditable="true"  class="text-xl sm:text-2xl md:text-4xl"> ${{data.credit_card}} </p>
+      <p class="text-lg sm:text-xl md:text-xl"> <span>Credit Card</span>  <span style="cursor: pointer;"
+          class="account-save-button float-right pl-3 "><svg style="pointer-events: none;" xmlns="http://www.w3.org/2000/svg" height="24px"
+            viewBox="0 0 24 24" width="24px" fill="#000000">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+          </svg></span></p>
       <span> <b>Due</b> 1/17/2022</span>
     </div>
   </div>
@@ -141,7 +147,7 @@
 
       <div class=" md:p-1 bg-blue-100 font-bold rounded-sm"> <span class="bill-name">{{name}}</span> <span  class="bill-cost md:px-8 font-light">{{cost}}</span>
         <div class="flex float-right justify-center">
-          <span class="md:px-8 font-light"> <span class="font-bold">Due </span> {{due_date}} </span>
+          <span class="md:px-8 font-light"> <span class="font-bold">Due </span > <span class="informal-due-date">{{due_date}}</span>  </span>
           <button id="{{id}}" type="button"
             class=" kill-bill bg-white rounded-full p-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
             <svg style="pointer-events: none;" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"

@@ -4,6 +4,7 @@ const { Bills, Debt, Accounts, Cards, User } = require('../../models');
 /////POST////////
 router.post('/bills', (req, res) => {
     req.body.user_id = req.session.user_id
+    console.log(req.body)
     Bills.create(req.body);
     res.redirect('/')
 
@@ -13,32 +14,16 @@ router.post('/bills', (req, res) => {
         .catch((err) => res.json(err));
 });
 
-router.post('/accounts', (req, res) => {
-    // req.body.user_id = req.session.user_id
-    let checking = {
-        name: req.body.checking,
-        amount: req.body.amount,
-        user_id: req.body.user_id
-    }
-    let savings = {
-        name: req.body.savings,
-        amount: req.body.amount,
-        user_id: req.body.user_id
-    }
-    Accounts.create(checking)
-    // .then((data1) => {
-    //     res.json(data1);
-    // })
-    // .catch((err) => res.json(err));
+// router.put('/accounts', (req, res) => {
 
 
-    Accounts.create(savings)
-    .then((data) => {
-        res.json(data);
-    })
-    .catch((err) => res.json(err));
+//     Accounts.update()
+//     .then((data) => {
+//         res.json(data);
+//     })
+//     .catch((err) => res.json(err));
 
-});
+// });
 
 ////DELETES/////
 router.delete('/bills/', (req, res) => {
@@ -68,14 +53,37 @@ router.delete('/bills/', (req, res) => {
 
 //////PUTS///////
 router.put('/account', (req, res) => {
-    Accounts.update({
-        amount: req.body.amount,
-    },
-        {
-            where: {
-                name: req.body.name,
-            }
-        }).then((accountUpdate) => res.json(accountUpdate))
+    if(req.body.name === 'checking'){
+        User.update({
+            checking: req.body.amount,
+        },
+            {
+                where: {
+                    id: req.session.user_id,
+                }
+            }).then((accountUpdate) => res.json(accountUpdate))
+
+    } else if (req.body.name === 'savings'){
+        User.update({
+            savings: req.body.amount,
+        },
+            {
+                where: {
+                    id: req.session.user_id,
+                }
+            }).then((accountUpdate) => res.json(accountUpdate))
+    } else if (req.body.name == 'credit card'){
+        User.update({
+            credit_card: req.body.amount,
+        },
+            {
+                where: {
+                    id: req.session.user_id,
+                }
+            }).then((accountUpdate) => res.json(accountUpdate))
+    } else {
+        console.log("error updating accounts")
+    }
 
 });
 
