@@ -1,9 +1,9 @@
 [
   {
-    "first_name": "Dillan",
-    "last_name": "Mansor",
-    "email": "dillanthomas88@gmail.com",
-    "password": "password123",
+    "first_name": "Admin",
+    "last_name": "Admin",
+    "email": "helloshoestringapp@gmail.com",
+    "password": "adminpassword123",
     "pay_day": "1/1/2022",
     "monthly_income": 0,
     "checking": 0,
