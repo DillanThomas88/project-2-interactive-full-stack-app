@@ -13,10 +13,7 @@ router.get('/', async (req, res) => {
       // const data = await User.findOne({ where: { id: req.session.user_id },
       const user = await User.findByPk(req.session.user_id, {
         include: [
-          { model: Bills }, 
-          { model: Accounts }, 
-          { model: Debt }, 
-          { model: Cards }],
+          { model: Bills }]
       });
       const userData = await user.get({ plain: true })
 
