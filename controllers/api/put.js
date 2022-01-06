@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Bills } = require('../../models');
 
 
 router.put("/reset/:id", async (req, res) => {
@@ -31,4 +31,59 @@ router.put("/reset/:id", async (req, res) => {
     }
   })
 
+  router.put("/bills", async (req, res) => {
+    try {
+      
+      const billInfo = await Bills.update(
+        {
+        debited: req.body.debited
+        },
+        {
+          where: {
+            id: req.body.id
+          },
+        }
+      )
+      if (!billInfo) {
+        res
+        .status(400)
+        .json({ message: 'changed bill status' });
+        return;
+      }
+  
+      res.json(billInfo)
+  
+    }catch (err) {
+      console.log(err)
+      res.status(500).json(err);
+    }
+  })
+
+  router.put("/income", async (req, res) => {
+    try {
+      
+      const data = await User.update(
+        {
+        monthly_income: req.body.monthly_income
+        },
+        {
+          where: {
+            id: req.session.user_id
+          },
+        }
+      )
+      if (!data) {
+        res
+        .status(400)
+        .json({ message: 'changed income status' });
+        return;
+      }
+  
+      res.json(data)
+  
+    }catch (err) {
+      console.log(err)
+      res.status(500).json(err);
+    }
+  })
   module.exports = router

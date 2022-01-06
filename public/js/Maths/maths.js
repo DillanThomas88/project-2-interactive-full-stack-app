@@ -13,15 +13,16 @@ const billNameEL = document.querySelectorAll('.bill-name')
 const informalDueDatesEL = document.querySelectorAll('.informal-due-date')
 
 
-billCostEL.forEach(element => {   
+
+billCostEL.forEach(element => {
 
   let x = parseInt(element.innerHTML).toLocaleString()
-    element.textContent = `$${x}`
+  element.textContent = `$${x}`
 });
 
 informalDueDatesEL.forEach(element => {
   let x = element.innerHTML.split("-")
-  let y = [`${x[1]}/`,`${x[2]}/`,`${x[0]}`].join('')
+  let y = [`${x[1]}/`, `${x[2]}/`, `${x[0]}`].join('')
   element.textContent = y
 });
 // not finished!
@@ -29,18 +30,17 @@ billNameEL.forEach(element => {
   let arr = element.innerHTML.split("")
   // console.log(arr)
   let index = undefined
-      for(let i = 0; i < arr.length; i++) {
-        const element = arr[i];
-        if(element === "&"){ index = i}
-      }
-      arr = arr.filter(data => data != "&").map(data => data.toUpperCase())
-      if(index != undefined){
-        arr = arr.splice(index,0, "&") 
-      }
+  for (let i = 0; i < arr.length; i++) {
+    const element = arr[i];
+    if (element === "&") { index = i }
+  }
+  arr = arr.filter(data => data != "&").map(data => data.toUpperCase())
+  if (index != undefined) {
+    arr = arr.splice(index, 0, "&")
+  }
 
   element.textContent = `${arr.join("")}`
 })
-
 
 
 
@@ -51,7 +51,7 @@ const leftOverCalculation = () => {
     x += element
   });
   // console.log(x);
-  
+
   let income = monthlyincomeEL.innerHTML
   let billtotal = x
   let leftover = income - billtotal
@@ -59,14 +59,15 @@ const leftOverCalculation = () => {
   monthlyincomeEL.textContent = `$${income.toLocaleString()}`
   monthlybillsEL.textContent = ` - $${billtotal.toLocaleString()}`
 
-  if(leftover < 0){ leftover *= -1; leaves.textContent = `- $${leftover.toLocaleString()}`}
-  else{leaves.textContent = `+ $${leftover.toLocaleString()}`}
-  
+  if (leftover < 0) { leftover *= -1; leaves.textContent = `- $${leftover.toLocaleString()}` }
+  else { leaves.textContent = `+ $${leftover.toLocaleString()}` }
+
 }
 
 
 const newCheckingBalance = () => {
 
+  dueDateEL.text
 }
 
 leftOverCalculation()
