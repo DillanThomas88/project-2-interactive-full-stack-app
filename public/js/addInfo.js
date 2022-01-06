@@ -4,7 +4,8 @@ const accountHandler = async (event) => {
   event.preventDefault()
   let target = event.element
 
-  const accountName = target.parentElement.textContent
+  const accountName = target.parentElement.children[0].textContent
+  console.log(accountName)
   const accountBalance = document.querySelector('#checking-account-amount').value.trim()
 
 
@@ -27,32 +28,38 @@ const accountHandler = async (event) => {
     }
   }
 }
-document
+const accountEL = document
   .querySelectorAll('.account-save-button')
-  .addEventListener('click', accountHandler)
+
+
+  accountEL.forEach(element => {
+      element.addEventListener('click', accountHandler)
+  });
 
 
 
 ///ADD BILLS ///
 const billsHandler = async (event) => {
   event.preventDefault()
+  console.log(event.target)
 
   const billName = document.querySelector('#bill-name').value.trim()
-  const billCost = document.querySelector('#bill-cost').value.trim()
-  const billDueDate = document.querySelector('#bill-due-date').value.trim()
-  const billIsAutoPay = document.querySelector('#bill-is-auto-pay').value.trim()
-  const billIsDebited = document.querySelector('#bill-is-debited').value.trim()
+  const billCost = parseInt(document.querySelector('#bill-cost').value.trim())
+  const billDueDate = document.querySelector('#bill-due-date').value
+  const billIsAutoPay = document.querySelector('#bill-is-auto-pay').checked;
+  // const billIsDebited = document.querySelector('#bill-is-debited').value.trim()
+  console.log(billName, billCost, billDueDate, billIsAutoPay)
 
-  if (billName && billCost && billDueDate && billIsAutoPay && billIsDebited) {
+  if (billName && billCost && billDueDate && billIsAutoPay) {
     let billInfo = {
       name: billName,
       cost: billCost,
       due_date: billDueDate,
       auto_pay: billIsAutoPay,
-      debited: billIsDebited,
+      debited: false,
     }
     console.log(billInfo)
-    const response = await fetch('/api/bills', {
+    const response = await fetch('/api/dash/bills', {
       method: 'POST',
       body: JSON.stringify(billInfo),
       headers: { 'Content-Type': 'application/json' },
@@ -98,9 +105,9 @@ const cardsHandler = async (event) => {
     }
   }
 }
-document
-  .querySelector('#card-save-button')
-  .addEventListener('click', cardsHandler)
+// document
+//   .querySelector('#card-save-button')
+//   .addEventListener('click', cardsHandler)
 
 ///UPDATE MONTHLY INCOME//////
 const incomeHandler = async (event) => {
@@ -127,9 +134,9 @@ const incomeHandler = async (event) => {
     }
   }
 }
-document
-  .querySelector('#income-save-button')
-  .addEventListener('click', incomeHandler)
+// document
+//   .querySelector('#income-save-button')
+//   .addEventListener('click', incomeHandler)
 
 
 
@@ -158,7 +165,6 @@ const paydayHandler = async (event) => {
     }
   }
 }
-document
-  .querySelector('#payday-save-button')
-  .addEventListener('click', paydayHandler)
-
+// document
+//   .querySelector('#payday-save-button')
+//   .addEventListener('click', paydayHandler)

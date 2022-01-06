@@ -1,3 +1,6 @@
+
+  
+  
   var openmodal = document.querySelectorAll('.modal-open')
   for (var i = 0; i < openmodal.length; i++) {
     openmodal[i].addEventListener('click', function (event) {
@@ -35,4 +38,5 @@
     modal.classList.toggle('pointer-events-none')
     body.classList.toggle('modal-active')
   }
+
 

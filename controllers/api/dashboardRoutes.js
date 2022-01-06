@@ -3,6 +3,7 @@ const { Bills, Debt, Accounts, Cards, User } = require('../../models');
 
 /////POST////////
 router.post('/bills', (req, res) => {
+    req.body.user_id = req.session.user_id
     Bills.create(req.body);
     res.redirect('/')
 
@@ -12,12 +13,38 @@ router.post('/bills', (req, res) => {
         .catch((err) => res.json(err));
 });
 
+router.post('/accounts', (req, res) => {
+    // req.body.user_id = req.session.user_id
+    let checking = {
+        name: req.body.checking,
+        amount: req.body.amount,
+        user_id: req.body.user_id
+    }
+    let savings = {
+        name: req.body.savings,
+        amount: req.body.amount,
+        user_id: req.body.user_id
+    }
+    Accounts.create(checking)
+    // .then((data1) => {
+    //     res.json(data1);
+    // })
+    // .catch((err) => res.json(err));
+
+
+    Accounts.create(savings)
+    .then((data) => {
+        res.json(data);
+    })
+    .catch((err) => res.json(err));
+
+});
 
 ////DELETES/////
 router.delete('/bills/', (req, res) => {
     Bills.destroy({
         where: {
-            id: req.body.id, //something like event.element...?///
+            id: req.body.id,
         },
     })
         .then((deletedBills) => {
@@ -46,8 +73,7 @@ router.put('/account', (req, res) => {
     },
         {
             where: {
-                user_id: req.session.user_id,
-                accounts_name: req.body.name
+                name: req.body.name,
             }
         }).then((accountUpdate) => res.json(accountUpdate))
 

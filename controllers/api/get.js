@@ -1,16 +1,22 @@
 const router = require('express').Router();
-const { User, Bills } = require('../../models');
+const { User, Bills, Accounts, Cards, Debt } = require('../../models');
 
-router.get('/',  async (req,res) => {
-    const data = await User.findAll()
-    res.json({ users: data });
-  
-  })
+router.get('/:id', async (req, res) => {
+  const user = await User.findByPk(req.params.id, {
+    include: [
+      { model: Bills },
+      { model: Accounts },
+      { model: Debt },
+      { model: Cards }],
+  });
+  // const userData = await user.get({ plain: true })
+  res.json({ User: user });
+})
 
-  router.get('/bills', async (req,res) => {
-    const data = await Bills.findAll()
-    res.json({ bills: data });
-  
-  })
+router.get('/bills', async (req, res) => {
+  const data = await Bills.findAll()
+  res.json({ bills: data });
 
-  module.exports = router
+})
+
+module.exports = router
