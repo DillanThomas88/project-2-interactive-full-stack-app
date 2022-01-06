@@ -1,5 +1,36 @@
 ///ADD CHECKING AND SAVINGS INFO ///
 
+
+const svgTakenBoolean = async (event) => {
+  event.preventDefault()
+
+  // ---------- need to finish
+  let billId = event.target
+  let billStatus = event.target
+  let billInfo = {
+    id: billId,
+    debited: billStatus
+  }
+  console.log(billInfo)
+  const response = await fetch('/api/put/bills', {
+    method: 'POST',
+    body: JSON.stringify(billInfo),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    document.location.replace('/')
+
+  } else {
+    alert('Please complete all fields.')
+  }
+}
+const svgEL = document.querySelectorAll('.svg-taken')
+svgEL.forEach(element => {
+
+  element.addEventListener('click', svgTakenBoolean)
+});
+
 const accountHandler = async (event) => {
   event.preventDefault()
   let target = event.target
@@ -31,11 +62,37 @@ const accountEL = document
   .querySelectorAll('.account-save-button')
 
 
-  accountEL.forEach(element => {
-      element.addEventListener('click', accountHandler)
-  });
+accountEL.forEach(element => {
+  element.addEventListener('click', accountHandler)
+});
 
 
+const monthlyIncomeHandler = async (event) => {
+  event.preventDefault()
+
+  const monthlyIncome = event.target.parentElement.parentElement.parentElement.children[1].innerHTML.split("$").filter(data => data != "$").join("")
+  console.log(monthlyIncome)
+
+
+  if (monthlyIncome) {
+    let data = {
+      monthly_income: monthlyIncome,
+    }
+    console.log(data)
+    const response = await fetch('/api/put/income', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/')
+    } else {
+      alert('Please enter an amount.')
+    }
+  }
+}
+const monthlyEL = document.querySelector('#monthly-income-clickable').addEventListener('click', monthlyIncomeHandler)
 
 ///ADD BILLS ///
 const billsHandler = async (event) => {
