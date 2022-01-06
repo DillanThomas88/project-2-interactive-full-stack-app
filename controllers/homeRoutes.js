@@ -11,10 +11,12 @@ router.get('/', async (req, res) => {
     } else {
       let logged_in = req.session.logged_in
       // const data = await User.findOne({ where: { id: req.session.user_id },
+      console.log("SESSION", req.session)
       const user = await User.findByPk(req.session.user_id, {
-        include: [
-          { model: Bills }]
+        // include: [
+        //   { model: Bills }]
       });
+      console.log("USER", user)
       const userData = await user.get({ plain: true })
 
       // res.status(200).json(userData)
@@ -24,6 +26,10 @@ router.get('/', async (req, res) => {
     }
 
   } catch (err) {
+  for(let key in Bills.rawAttributes){
+    console.log("field", key)
+  }
+    console.log("Error", err)
     res.status(500).json(err);
   }
 });
