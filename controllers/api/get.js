@@ -1,13 +1,10 @@
 const router = require('express').Router();
-const { User, Bills, Accounts, Cards, Debt } = require('../../models');
+const { User, Bills} = require('../../models');
 
 router.get('/:id', async (req, res) => {
   const user = await User.findByPk(req.params.id, {
     include: [
-      { model: Bills },
-      { model: Accounts },
-      { model: Debt },
-      { model: Cards }],
+      { model: Bills }]
   });
   // const userData = await user.get({ plain: true })
   res.json({ User: user });
