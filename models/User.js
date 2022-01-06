@@ -59,6 +59,14 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    bills_before: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    new_checking: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     hooks: {
