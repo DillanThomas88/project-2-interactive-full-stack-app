@@ -2,17 +2,16 @@
 
 const accountHandler = async (event) => {
   event.preventDefault()
-  let target = event.element
+  let target = event.target
 
-  // const accountName = target.parentElement.children[0].textContent
-  // console.log(accountName)
-  const accountBalance = document.querySelector('#checking-account-amount').value.trim()
+  const account_amount = target.parentElement.parentElement.children[0].textContent.split("$").filter(data => data != "$").join("")
+  const account_name = target.parentElement.children[0].textContent.toLowerCase()
 
 
-  if (accountBalance) {
+  if (account_name && account_amount) {
     let accountData = {
-      name: accountName,
-      amount: accountBalance,
+      name: account_name,
+      amount: account_amount
     }
     console.log(accountData)
     const response = await fetch('/api/dash/account', {
