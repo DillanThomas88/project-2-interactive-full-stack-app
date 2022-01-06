@@ -10,6 +10,7 @@ CREATE TABLE customers(
     email VARCHAR(100),
     password VARCHAR(25),
     PRIMARY KEY(id)
+
 );
 
 CREATE TABLE accounts(
@@ -19,13 +20,13 @@ CREATE TABLE accounts(
     PRIMARY KEY(id)
 );
 
-CREATE TABLE cards(
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(15),
-    amount INT,
-    due_date VARCHAR(15),
-    PRIMARY KEY(id)
-)
+-- CREATE TABLE cards(
+--     id INT NOT NULL AUTO_INCREMENT,
+--     name VARCHAR(15),
+--     amount INT,
+--     due_date VARCHAR(15),
+--     PRIMARY KEY(id)
+-- );
 
 CREATE TABLE bills(
     id INT NOT NULL AUTO_INCREMENT,
