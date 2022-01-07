@@ -60,14 +60,15 @@ const leftOverCalculation = () => {
   let leftover = newone - billtotal
 
 
+
   console.log(newone, billtotal, leftover)
 
 
   monthlyincomeEL.textContent = `${income}`
   monthlybillsEL.textContent = ` - $${billtotal.toLocaleString()}`
 
-  if (leftover < 0) { leftover *= -1; leaves.textContent = `- $${leftover.toLocaleString()}` }
-  else { leaves.textContent = `+ $${leftover.toLocaleString()}` }
+  if (leftover < 0) { leftover *= -1; leaves.textContent = `- $${leftover.toLocaleString()}`; leaves.style.color = `#EE4949` }
+  else { leaves.textContent = `+ $${leftover.toLocaleString()}`; leaves.style.color = `#2CBB39` }
 
 }
 
@@ -76,6 +77,45 @@ const newCheckingBalance = () => {
 
   dueDateEL.text
 }
+
+const timeBar = () => {
+
+  const tbEL = document.querySelector('#time-bar')
+  const timeBallEL = document.querySelector('#time-ball')
+  const timeINTEL = document.querySelector('#time-int')
+
+  let size = window.screen.width
+  let seconds = 86400
+
+  let dt = new Date();
+  let options = { hour12: true };
+  let secs = dt.getSeconds() + (60 * dt.getMinutes()) + (60 * 60 * dt.getHours());
+  let fraction = Math.floor((size/seconds) * secs)
+  let ampm = dt.toLocaleString('en-US', options).split(" ").splice(2,1)
+  let time = dt.toLocaleString('en-US', options).split(",").splice(1,1).join("").split(":").splice(0,2).join(":") + ` ${ampm}`
+  
+  tbEL.style.width = `${Math.floor((size/seconds) * secs)}px`
+  timeBallEL.style.left = `${fraction - 15}px` 
+  timeINTEL.style.left = `${fraction - 70}px` 
+  timeINTEL.innerHTML = time
+  
+  setInterval(() => {
+
+    let dt = new Date();
+    let ampm = dt.toLocaleString('en-US', options).split(" ").splice(2,1)
+    let time = dt.toLocaleString('en-US', options).split(",").splice(1,1).join("").split(":").splice(0,2).join(":") + ` ${ampm}`
+    let secs = dt.getSeconds() + (60 * dt.getMinutes()) + (60 * 60 * dt.getHours());
+    let fraction = Math.floor((size/seconds) * secs)
+    console.log(ampm)
+
+    timeBallEL.style.left = `${fraction - 15}px` 
+    tbEL.style.width = `${fraction}px`
+    timeINTEL.innerHTML = time
+    timeINTEL.style.left = `${fraction - 70}px` 
+  }, 500);
+}
+
+timeBar()
 
 leftOverCalculation()
 
