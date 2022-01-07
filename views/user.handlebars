@@ -2,20 +2,24 @@
 <div class="flex font-monster">
   <div class="w-screen md:w-screen p-28 sm:p-2 md:p-2 m-auto">
     <div class="flex items-center max-w-screen-xl m-auto">
-      <div class="md:px-20 mr-20 text-xl sm:text-2xl md:text-3xl font-bold"> Accounts <button
+      <div class="md:px-20 mr-20 text-xl sm:text-2xl md:text-3xl font-bold"> Accounts 
+        {{!-- <button
           class="inline-flex items-center justify-center w-7 h-7 mr-2 text-white transition-colors duration-150 bg-gray-300 rounded-sm focus:shadow-outline hover:bg-gray-700">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
             <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
               clip-rule="evenodd" fill-rule="evenodd"></path>
           </svg>
-        </button></div>
-      <div class="md:pl-60 ml-60 text-xl sm:text-2xl md:text-3xl font-bold"> Cards <button
+        </button> --}}
+        </div>
+      <div class="md:pl-60 ml-60 text-xl sm:text-2xl md:text-3xl font-bold"> Cards 
+        {{!-- <button
           class="inline-flex items-center justify-center w-7 h-7 mr-2 text-white transition-colors duration-150 bg-gray-300 rounded-sm focus:shadow-outline hover:bg-gray-700">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
             <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
               clip-rule="evenodd" fill-rule="evenodd"></path>
           </svg>
-        </button></div>
+        </button> --}}
+        </div>
     </div>
   </div>
 </div>
@@ -24,8 +28,10 @@
 <div class="flex m-auto justify-around md:p-4 items-center font-monster md:w-screen max-w-screen-2xl">
   <div class="md:p-10 flex bg-blue-100 md:w-7/12 md:h-7/12">
     <div class="m-auto">
+      
       <p contenteditable="true" class="text-xl sm:text-2xl md:text-4xl font-light"><span
-          class="bill-cost">{{data.checking}}</span> </p>
+          class="bill-cost">{{data.checking}}</span>
+      </p>
       <p class="text-lg sm:text-xl md:text-xl font-light"> <span>Checking</span> <span style="cursor: pointer;"
           class="account-save-button float-right pl-3">
           <?xml version="1.0" encoding="UTF-8"?>
@@ -38,7 +44,8 @@
                 d="m91.68 64.574-23.586 23.586c-0.03125 0.0625-0.097656 0.097656-0.12891 0.12891-0.86328 0.86328-1.9844 1.4062-3.1055 1.5664-0.097656 0-0.19141 0.03125-0.28906 0.03125-0.19141 0.03125-0.38281 0.03125-0.57422 0.03125l-0.54297-0.03125c-0.097656 0-0.19141-0.03125-0.28906-0.03125-1.1523-0.16016-2.2383-0.70312-3.1055-1.5664l-23.715-23.715c-1.0898-1.0898-1.6328-2.5273-1.6328-3.9688 0-1.4414 0.54297-2.8789 1.6328-3.9688 2.1758-2.1758 5.7266-2.1758 7.9375 0l14.176 14.176 0.007813-51.934c0-3.0703 2.5273-5.6016 5.6016-5.6016 1.5352 0 2.9453 0.64062 3.9688 1.6328 1.0234 1.0234 1.6328 2.3984 1.6328 3.9688v51.938l14.176-14.176c2.1758-2.1758 5.7266-2.1758 7.9375 0 2.0742 2.207 2.0742 5.7578-0.10156 7.9336z" />
             </g>
           </svg>
-        </span> </p>
+        </span>
+      </p>
     </div>
 
     <div class="m-auto">
@@ -165,7 +172,8 @@
 
       {{#each data.bills}}
 
-      <div class=" visual md:p-1 bg-blue-100 font-bold rounded-sm"> <div class="float-left"><span class="bill-name ">{{name}}</span></div> <span
+      <div class=" md:p-1 bg-blue-100 font-bold rounded-sm">
+        <div class="float-left"><span class="bill-name ">{{name}}</span></div> <span
           class="bill-cost md:px-8 font-light">{{cost}}</span>
         <div class="flex float-right justify-center">
           <span class="md:px-8 font-light"> <span class="font-bold">Due </span> <span
@@ -189,8 +197,8 @@
         <li class="flex"> Taken out of acccount
           <span id="{{id}}" status="true" style="cursor: pointer;" class="svg-taken">
             <?xml version="1.0" encoding="UTF-8"?>
-            <svg style="pointer-events:none"  width="30pt" height="20pt" version="1.1"
-              viewBox="-40 0 170 170" xmlns="http://www.w3.org/2000/svg">
+            <svg style="pointer-events:none" width="30pt" height="20pt" version="1.1" viewBox="-40 0 170 170"
+              xmlns="http://www.w3.org/2000/svg">
               <path style="pointer-events: none;"
                 d="m0 65.98c2.6406-5.2773 7.918-11.875 17.156-9.2383 7.918 2.6406 13.195 10.559 17.156 21.113 31.672-35.629 58.062-60.699 89.73-68.617 3.957 0 5.2773 0 2.6406 2.6406-34.309 23.754-67.301 59.383-93.691 105.57-1.3203 1.3203-2.6406 1.3203-3.957 0-5.2773-13.195-9.2383-26.391-15.836-39.586-2.6406-6.5977-6.5977-11.875-13.195-11.875z"
                 fill="#39c367" fill-rule="evenodd" />
@@ -202,7 +210,8 @@
         <li class="flex"> Taken out of acccount
           <span id="{{id}}" status="false" style="cursor: pointer;" class="svg-taken">
             <?xml version="1.0" encoding="UTF-8"?>
-            <svg style="pointer-events: none;" width="30pt" height="20pt" version="1.1" viewBox="0 0 170 170" xmlns="http://www.w3.org/2000/svg">
+            <svg style="pointer-events: none;" width="30pt" height="20pt" version="1.1" viewBox="0 0 170 170"
+              xmlns="http://www.w3.org/2000/svg">
               <path style="pointer-events: none;"
                 d="m23.297 68.734h81.281c1.4062 0 2.5586-1.1523 2.5586-2.5586v-4.4805c0-1.4062-1.1523-2.5586-2.5586-2.5586h-81.281c-1.4062 0-2.5586 1.1523-2.5586 2.5586v4.4805c-0.003906 1.4102 1.1484 2.5586 2.5586 2.5586z"
                 fill="#9999" />
@@ -256,10 +265,11 @@
     <div class="grid grid-row-2 md:grid-row-2 divide-y divide-gray-300">
       <div class="text-black">
         <p class="bg-gray-100">
-          <span class="md:p-1 text-xl sm:text-2xl md:text-lg "> Next Payday </span><span  style="cursor:pointer" class="float-right pl-3">
+          <span class="md:p-1 text-xl sm:text-2xl md:text-lg "> Next Payday </span><span style="cursor:pointer"
+            class="float-right pl-3">
             <?xml version="1.0" encoding="UTF-8"?>
-            <svg  style="pointer-events: none;" height="20pt" version="1.1"
-              viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+            <svg style="pointer-events: none;" height="20pt" version="1.1" viewBox="0 0 128 128"
+              xmlns="http://www.w3.org/2000/svg">
               <g fill="#000">
                 <path
                   d="m114.82 87.105v22.496c0 0.44922-0.0625 0.86328-0.16016 1.2461-0.44922 2.207-2.3984 3.8711-4.7031 3.8711h-91.938c-2.4648 0-4.5117-1.8867-4.7695-4.2891-0.0625-0.28906-0.0625-0.54297-0.0625-0.86328v-22.496c0-2.6562 2.1758-4.8008 4.8008-4.8008 1.3125 0 2.5273 0.54297 3.3906 1.4062s1.4062 2.0781 1.4062 3.3906v18.016h82.465v-18.016c0-2.6562 2.1758-4.8008 4.8008-4.8008 1.3125 0 2.5273 0.54297 3.3906 1.4062 0.83594 0.90234 1.3789 2.1211 1.3789 3.4336z" />
