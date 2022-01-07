@@ -4,7 +4,7 @@ A web application that allows you to keep track of monthly expenses all in one p
 This is a group project for the UCSD Coding Bootcamp requiring our group to design and build our first full-stack web application using the MVC paradigm, creating our own server-side API, adding user authentication, and connecting to a database.
 
 ## Description
-**Budgeting is anything but simple. To keep track of your finances every month, you might use a notepad and calculator, an Excel spreadsheet, check multiple apps, or just hope for the best. 
+**Creating a budget is not always simple. To keep track of your finances every month, you might use a notepad and calculator, an Excel spreadsheet, check multiple apps, or just hope for the best.** 
 
 **For those who are ballin' on a budget, but still want to make sure they feel like they have their life together, we created the Shoestring app to keep it simple.**
 
