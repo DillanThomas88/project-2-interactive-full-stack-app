@@ -109,7 +109,7 @@ router.post('/request-new', async (req, res) => {
             return;
         }
 
-        const link = `https://shoestring-finance.herokuapp.com/password-reset?${validEmail.id}`;
+        const link = `https://shoestring-app.herokuapp.com/password-reset?${validEmail.id}`;
         await sendEmail(req.body.accountEmail, "Your password reset link", `Here is your link to reset your password: ${link}`);
 
         res.send("password reset link sent to your email account");

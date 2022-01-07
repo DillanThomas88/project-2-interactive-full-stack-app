@@ -149,10 +149,12 @@ const billsHandler = async (event) => {
     });
 
     if (response.ok) {
-      console.log('hit')
+
       document.location.replace('/')
     } else {
-      alert('Please complete all fields.')
+      console.log(response.status)
+      // -------------------------------------------- remove later
+      document.location.replace('/')
     }
   }
 }
