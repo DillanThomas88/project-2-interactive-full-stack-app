@@ -35,8 +35,10 @@ billNameEL.forEach(element => {
     if (element === "&") { index = i }
   }
   arr = arr.filter(data => data != "&").map(data => data.toUpperCase())
+  // console.log(arr)
   if (index != undefined) {
-    arr = arr.splice(index, 0, "&")
+    arrss = arr.splice(index, 4, "&")
+    // console.log(arrss)
   }
 
   element.textContent = `${arr.join("")}`
@@ -54,9 +56,14 @@ const leftOverCalculation = () => {
 
   let income = monthlyincomeEL.innerHTML
   let billtotal = x
-  let leftover = income - billtotal
+  let newone = parseInt(income.split("").filter(data => data != "$").filter(data => data != ",").join(""))
+  let leftover = newone - billtotal
 
-  monthlyincomeEL.textContent = `$${income.toLocaleString()}`
+
+  console.log(newone, billtotal, leftover)
+
+
+  monthlyincomeEL.textContent = `${income}`
   monthlybillsEL.textContent = ` - $${billtotal.toLocaleString()}`
 
   if (leftover < 0) { leftover *= -1; leaves.textContent = `- $${leftover.toLocaleString()}` }
