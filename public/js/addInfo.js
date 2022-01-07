@@ -1,22 +1,30 @@
 ///ADD CHECKING AND SAVINGS INFO ///
 
+const checkSVG = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30pt" height="20pt" version="1.1" viewBox="-40 0 170 170" xmlns="http://www.w3.org/2000/svg">
+ <path d="m0 65.98c2.6406-5.2773 7.918-11.875 17.156-9.2383 7.918 2.6406 13.195 10.559 17.156 21.113 31.672-35.629 58.062-60.699 89.73-68.617 3.957 0 5.2773 0 2.6406 2.6406-34.309 23.754-67.301 59.383-93.691 105.57-1.3203 1.3203-2.6406 1.3203-3.957 0-5.2773-13.195-9.2383-26.391-15.836-39.586-2.6406-6.5977-6.5977-11.875-13.195-11.875z" fill="#39c367" fill-rule="evenodd"/>
+</svg>`
+const notCheckedSVG = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30pt" height="20pt" version="1.1" viewBox="0 0 170 170" xmlns="http://www.w3.org/2000/svg">
+ <path d="m23.297 68.734h81.281c1.4062 0 2.5586-1.1523 2.5586-2.5586v-4.4805c0-1.4062-1.1523-2.5586-2.5586-2.5586h-81.281c-1.4062 0-2.5586 1.1523-2.5586 2.5586v4.4805c-0.003906 1.4102 1.1484 2.5586 2.5586 2.5586z" fill="#9999"/>
+</svg>`
+
 
 const svgTakenBoolean = async (event) => {
-  event.preventDefault()
-
-  // ---------- need to finish
-  let billId = event.target.getAttribute('id')
-  let billStatus = event.target.getAttribute('status')
+ 
+  const billId = event.target.getAttribute('id')
+  const billStatus = event.target.getAttribute('status')
   let isTrue = false
-  if(billStatus == 'true'){ isTrue = false}
-  else { isTrue = true}
-
-  if(billId && billStatus){
+  if (billStatus == 'true') { isTrue = false }
+  else { isTrue = true }
+  
+  console.log('working')
+  if (billId && billStatus) {
     let billInfo = {
       id: billId,
       debited: isTrue
     }
-
+    console.log(billInfo)
     const response = await fetch('/api/put/bills', {
       method: 'PUT',
       body: JSON.stringify(billInfo),
@@ -24,8 +32,19 @@ const svgTakenBoolean = async (event) => {
     });
 
     if (response.ok) {
-      
-      
+      document.location.replace('/')
+      // const flipSVGS = (target, status) => {
+      //   if(status == "true") {
+      //     target.innerHTML = notCheckedSVG;
+      //     target.setAttribute('status', 'false')          
+      //   } else { 
+      //     target.innerHTML = checkSVG;
+      //     target.setAttribute('status', 'true')
+      //   }
+      // }
+
+      // flipSVGS(event.target, billStatus)
+
     } else {
       alert('Please complete all fields.')
     }
@@ -78,7 +97,7 @@ const monthlyIncomeHandler = async (event) => {
   console.log(event.target.parentElement.children[1])
 
   const monthlyIncome = event.target.parentElement.children[1].innerHTML.split("").filter(data => data != "$").filter(data => data != ",").join("")
-  
+
 
   if (monthlyIncome) {
     let data = {
