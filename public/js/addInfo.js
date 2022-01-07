@@ -5,25 +5,32 @@ const svgTakenBoolean = async (event) => {
   event.preventDefault()
 
   // ---------- need to finish
-  let billId = event.target
-  let billStatus = event.target
-  let billInfo = {
-    id: billId,
-    debited: billStatus
-  }
-  console.log(billInfo)
-  const response = await fetch('/api/put/bills', {
-    method: 'POST',
-    body: JSON.stringify(billInfo),
-    headers: { 'Content-Type': 'application/json' },
-  });
+  let billId = event.target.getAttribute('id')
+  let billStatus = event.target.getAttribute('status')
+  let isTrue = false
+  if(billStatus == 'true'){ isTrue = false}
+  else { isTrue = true}
 
-  if (response.ok) {
-    document.location.replace('/')
+  if(billId && billStatus){
+    let billInfo = {
+      id: billId,
+      debited: isTrue
+    }
 
-  } else {
-    alert('Please complete all fields.')
+    const response = await fetch('/api/put/bills', {
+      method: 'PUT',
+      body: JSON.stringify(billInfo),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      
+      
+    } else {
+      alert('Please complete all fields.')
+    }
   }
+
 }
 const svgEL = document.querySelectorAll('.svg-taken')
 svgEL.forEach(element => {
@@ -34,8 +41,7 @@ svgEL.forEach(element => {
 const accountHandler = async (event) => {
   event.preventDefault()
   let target = event.target
-
-  const account_amount = target.parentElement.parentElement.children[0].textContent.split("$").filter(data => data != "$").join("")
+  const account_amount = target.parentElement.parentElement.children[0].textContent.split("").filter(data => data != "$").filter(data => data != ",").join("")
   const account_name = target.parentElement.children[0].textContent.toLowerCase()
 
 
@@ -69,10 +75,10 @@ accountEL.forEach(element => {
 
 const monthlyIncomeHandler = async (event) => {
   event.preventDefault()
+  console.log(event.target.parentElement.children[1])
 
-  const monthlyIncome = event.target.parentElement.parentElement.parentElement.children[1].innerHTML.split("$").filter(data => data != "$").join("")
-  console.log(monthlyIncome)
-
+  const monthlyIncome = event.target.parentElement.children[1].innerHTML.split("").filter(data => data != "$").filter(data => data != ",").join("")
+  
 
   if (monthlyIncome) {
     let data = {
@@ -102,7 +108,9 @@ const billsHandler = async (event) => {
   const billName = document.querySelector('#bill-name').value.trim()
   const billCost = parseInt(document.querySelector('#bill-cost').value.trim())
   const billDueDate = document.querySelector('#bill-due-date').value
-  const billIsAutoPay = document.querySelector('#bill-is-auto-pay').checked;
+  const billIsAutoPay = document.querySelector('#bill-is-auto-pay');
+  let isautoPay = false
+  if (billIsAutoPay.checked) { isautoPay = true }
   // const billIsDebited = document.querySelector('#bill-is-debited').value.trim()
   console.log(billName, billCost, billDueDate, billIsAutoPay)
 
@@ -111,7 +119,7 @@ const billsHandler = async (event) => {
       name: billName,
       cost: billCost,
       due_date: billDueDate,
-      auto_pay: billIsAutoPay,
+      auto_pay: isautoPay,
       debited: false,
     }
     console.log(billInfo)
@@ -122,6 +130,7 @@ const billsHandler = async (event) => {
     });
 
     if (response.ok) {
+      console.log('hit')
       document.location.replace('/')
     } else {
       alert('Please complete all fields.')
