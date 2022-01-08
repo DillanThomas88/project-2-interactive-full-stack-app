@@ -87,32 +87,26 @@ const timeBar = () => {
   let size = window.screen.width
   let seconds = 86400
 
-  let dt = new Date();
-  let options = { hour12: true };
-  let secs = dt.getSeconds() + (60 * dt.getMinutes()) + (60 * 60 * dt.getHours());
-  let fraction = Math.floor((size/seconds) * secs)
-  let ampm = dt.toLocaleString('en-US', options).split(" ").splice(2,1)
-  let time = dt.toLocaleString('en-US', options).split(",").splice(1,1).join("").split(":").splice(0,2).join(":") + ` ${ampm}`
+  setUpDynamicClock()
   
-  tbEL.style.width = `${Math.floor((size/seconds) * secs)}px`
-  timeBallEL.style.left = `${fraction - 15}px` 
-  timeINTEL.style.left = `${fraction - 70}px` 
-  timeINTEL.innerHTML = time
-  
-  setInterval(() => {
-
-    let dt = new Date();
-    let ampm = dt.toLocaleString('en-US', options).split(" ").splice(2,1)
-    let time = dt.toLocaleString('en-US', options).split(",").splice(1,1).join("").split(":").splice(0,2).join(":") + ` ${ampm}`
-    let secs = dt.getSeconds() + (60 * dt.getMinutes()) + (60 * 60 * dt.getHours());
-    let fraction = Math.floor((size/seconds) * secs)
-    console.log(ampm)
-
-    timeBallEL.style.left = `${fraction - 15}px` 
-    tbEL.style.width = `${fraction}px`
-    timeINTEL.innerHTML = time
-    timeINTEL.style.left = `${fraction - 70}px` 
+  let timer = setInterval(() => {
+    clearInterval(timer)
+    timeBar()
   }, 500);
+
+  function setUpDynamicClock() {
+    let dt = new Date()
+    let options = { hour12: true }
+    let secs = dt.getSeconds() + (60 * dt.getMinutes()) + (60 * 60 * dt.getHours())
+    let fraction = Math.floor((size / seconds) * secs)
+    let ampm = dt.toLocaleString('en-US', options).split(" ").splice(2, 1)
+    let time = dt.toLocaleString('en-US', options).split(",").splice(1, 1).join("").split(":").splice(0, 2).join(":") + ` ${ampm}`
+
+    tbEL.style.width = `${fraction}px`
+    timeBallEL.style.left = `${fraction - 15}px`
+    timeINTEL.style.left = `${fraction - 70}px`
+    timeINTEL.innerHTML = time
+  }
 }
 
 timeBar()
