@@ -1,8 +1,25 @@
-<br><br><br><br>
+<div style="drop-shadow-md z-index: -1; height: 3px; position:fixed; top: 62px; left: 0px; background-color: #1111"
+  class=" w-screen">
+</div>
+<div id="time-bar" style="drop-shadow-md z-index: 0; height: 3px; width: 0px; position:fixed; top: 66px; left: 0px"
+  class="  bg-blue-300">
+</div>
+<div id="time-ball" style=" z-index: 11; position:fixed; top: 55px; left: 0px;">
+  <svg style="pointer-events: none;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+    fill="#75ACFF">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path d="M7 14l5-5 5 5z" />
+  </svg>
+</div>
+<div id="time-int" style=" z-index: 11; position:fixed; top: 45px; left: 0px;" class="italic text-black text-center font-normal ">
+  0:00 pm
+</div>
+<br><br><br>
+<br>
 <div class="flex font-monster">
   <div class="w-screen md:w-screen p-28 sm:p-2 md:p-2 m-auto">
     <div class="flex items-center max-w-screen-xl m-auto">
-      <div class="md:px-20 mr-20 text-xl sm:text-2xl md:text-3xl font-bold"> Accounts 
+      <div class="md:px-20 mr-20 text-xl sm:text-2xl md:text-3xl font-bold"> Accounts
         {{!-- <button
           class="inline-flex items-center justify-center w-7 h-7 mr-2 text-white transition-colors duration-150 bg-gray-300 rounded-sm focus:shadow-outline hover:bg-gray-700">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
@@ -10,8 +27,8 @@
               clip-rule="evenodd" fill-rule="evenodd"></path>
           </svg>
         </button> --}}
-        </div>
-      <div class="md:pl-60 ml-60 text-xl sm:text-2xl md:text-3xl font-bold"> Cards 
+      </div>
+      <div class="md:pl-60 ml-60 text-xl sm:text-2xl md:text-3xl font-bold"> Cards
         {{!-- <button
           class="inline-flex items-center justify-center w-7 h-7 mr-2 text-white transition-colors duration-150 bg-gray-300 rounded-sm focus:shadow-outline hover:bg-gray-700">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
@@ -19,7 +36,7 @@
               clip-rule="evenodd" fill-rule="evenodd"></path>
           </svg>
         </button> --}}
-        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -28,11 +45,11 @@
 <div class="flex m-auto justify-around md:p-4 items-center font-monster md:w-screen max-w-screen-2xl">
   <div class="md:p-10 flex bg-blue-100 md:w-7/12 md:h-7/12">
     <div class="m-auto">
-      
+
       <p contenteditable="true" class="text-xl sm:text-2xl md:text-4xl font-light"><span
           class="bill-cost">{{data.checking}}</span>
       </p>
-      <p class="text-lg sm:text-xl md:text-xl font-light"> <span>Checking</span> <span style="cursor: pointer;"
+      <p class="  text-lg sm:text-xl md:text-xl font-light"> <span>Checking</span> <span style="cursor: pointer;"
           class="account-save-button float-right pl-3">
           <?xml version="1.0" encoding="UTF-8"?>
           <svg style="pointer-events: none;" height="20pt" version="1.1" viewBox="0 0 128 128"
@@ -66,7 +83,7 @@
         </span> </p>
     </div>
   </div>
-  <div class="md:p-7 flex bg-gray-100 justify-center md:w-4/12">
+  <div class="md:p-10 flex bg-gray-100 justify-center md:w-4/12 md:h-7/12">
     <div class="m-auto">
       <p contenteditable="true" class="text-xl sm:text-2xl md:text-4xl"><span class="bill-cost">{{data.credit_card}}
         </span> </p>
@@ -94,9 +111,9 @@
 
       <div class="pb-4">
 
-        <div class="text-xl sm:text-xl md:text-2xl font-bold"> Bills/Debt <button
-            class="modal-open inline-flex items-center justify-center w-6 h-6 mr-2 text-white transition-colors duration-150 bg-gray-300 rounded-lg focus:shadow-outline hover:bg-gray-600">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+        <div class="text-xl sm:text-xl md:text-2xl font-bold"> Bills/Debts <button
+            class="modal-open inline-flex items-center justify-center w-10 h-7 mr-2 text-white transition-colors duration-150 bg-gray-300 rounded-sm focus:shadow-outline hover:bg-blue-500">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
               <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                 clip-rule="evenodd" fill-rule="evenodd"></path>
             </svg>
@@ -179,7 +196,7 @@
           <span class="md:px-8 font-light"> <span class="font-bold">Due </span> <span
               class="informal-due-date">{{due_date}}</span> </span>
           <button id="{{id}}" type="button"
-            class=" kill-bill bg-white rounded-full p-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+            class=" kill-bill bg-white rounded-full p-0 inline-flex items-center justify-center text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
             <svg style="pointer-events: none;" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
               viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
