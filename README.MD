@@ -70,9 +70,9 @@ We learned a lot about routing, databases and tying it all into the front end.
 We encountered challenges with sending data back and forth from the front end.
 
 ## Link and Photos
-![Screenshot of live site](https://raw.githubusercontent.com/DillanThomas88/project-2-interactive-full-stack-app/main/Screenshot-home.png)
+![Screenshot of live site](https://i.ibb.co/PgDqgd4/Screenshot-home.png)
 
-![Screenshot of live site](https://raw.githubusercontent.com/DillanThomas88/project-2-interactive-full-stack-app/main/Screenshot-dash.png)
+![Screenshot of live site](https://i.ibb.co/nkKp7xh/Screenshot-dash.png)
 
 Link to live site (still under construction): https://shoestring-app.herokuapp.com/
 
