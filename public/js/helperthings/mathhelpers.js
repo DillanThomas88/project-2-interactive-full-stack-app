@@ -60,7 +60,6 @@ const leftOverCalculation = () => {
 
 
 
-  console.log(newone, billtotal, leftover)
 
 
   monthlyincomeEL.textContent = `${income}`
@@ -105,7 +104,6 @@ const timeBar = () => {
     let time = dt.toLocaleString('en-US', options).split(",").splice(1,1).join("").split(":").splice(0,2).join(":") + ` ${ampm}`
     let secs = dt.getSeconds() + (60 * dt.getMinutes()) + (60 * 60 * dt.getHours());
     let fraction = Math.floor((size/seconds) * secs)
-    console.log(ampm)
 
     timeBallEL.style.left = `${fraction - 15}px` 
     tbEL.style.width = `${fraction}px`
