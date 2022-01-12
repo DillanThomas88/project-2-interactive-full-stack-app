@@ -74,7 +74,7 @@ We encountered challenges with sending data back and forth from the front end.
 
 ![Screenshot of live site](https://i.ibb.co/nkKp7xh/Screenshot-dash.png)
 
-Link to live site (still under construction): https://shoestring-app.herokuapp.com/
+Link to live site (still under construction): https://shoestring-finance.herokuapp.com/
 
 ## Contributors 
 Hayley McHugh, Dillan Mansor, Tommy La, Nicole Beilke, Denny Jalate
